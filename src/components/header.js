@@ -4,32 +4,34 @@ import Link from 'gatsby-link';
 
 import logo from '../images/logo.jpg';
 
-const Header = ({ props }) => {
-  const { location } = props;
-  return (
-    <div className="header-wrapper">
-      <div className="header-container">
-        <h1>
-          <Link to="/">
-            <img src={logo} alt="Logo" />
-          </Link>
-        </h1>
-        <nav className="main-nav">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About Us</Link>
-            </li>
-            <li>
-              <Link to="/competition">Competitions</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+const Header = () => (
+  <div className="header-wrapper">
+    <Link className="site-title" to="/">
+      <h1>KSU Robotics</h1>
+    </Link>
+    <div className="nav-wrapper">
+      <nav className="main-nav">
+        <ul>
+          <li>
+            <Link exact activeClassName="current-url" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="current-url" to="/about">
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link activeClassName="current-url" to="/competition">
+              Competitions
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </div>
-  );
-};
+    <button>Contact Us!</button>
+  </div>
+);
 
 export default Header;

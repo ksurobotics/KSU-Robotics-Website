@@ -8,7 +8,7 @@ import './index.styl';
 const Layout = ({ children }) => (
   <div>
     <Helmet link={[{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', rel: 'stylesheet' }]} />
-    <Header location={location} />
+    <Header />
     <div>{children()}</div>
   </div>
 );
