@@ -1,0 +1,13 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+
+# Config Files
+/config
+
+# Build directory
+/public
+
+# For me
+/local
