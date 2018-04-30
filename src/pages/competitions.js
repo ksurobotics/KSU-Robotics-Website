@@ -1,27 +1,17 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import video from '../images/Robot_Code.mp4';
-import robot from '../images/Robot.jpeg';
 
-const IndexPage = () => (
-  <div className="page-wrapper home-page">
+const CompetitionPage = () => (
+  <div className="page-wrapper">
     <Helmet
-      title="KSU Robotics"
+      title="KSU Robotics || Competitions"
       meta={[
-        { name: 'description', content: 'The KSU Robotics homepage.' },
-        { name: 'keywords', content: 'KSU Robotics' },
+        { name: 'description', content: 'View some of our recent competitions.' },
+        { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
       ]}
     />
-    <video autoPlay muted loop src={video} type="video/mp4" alt="A video of code scrolling" />
-
-    <div className="wrapper">
-      <div className="card">
-        <h1>KSU Robotics</h1>
-        <h2>Where Trial and Error is the Only Answer</h2>
-      </div>
-      <img src={robot} alt="A picture of the 2018 K-state Robot" />
-    </div>
+    <h1>This is the competitions page</h1>
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
@@ -47,4 +37,4 @@ const IndexPage = () => (
   </div>
 );
 
-export default IndexPage;
+export default CompetitionPage;

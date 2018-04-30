@@ -22,6 +22,7 @@
     font-weight: bold
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.4)
     z-index: 2
+    cursor: pointer
     &:hover
       box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.4)
       background: #e6e6e6
@@ -33,20 +34,19 @@
   left: 0
 .main-nav
   ul 
-    list-style: none
     display: flex
-    li 
+    .current-url, a:hover
+      border-bottom: 3px solid white
+      color: white
+      padding-bottom: .3rem
+      transition: .3s all cubic-bezier(.52,-1,.26,2);
+    a 
       margin-left: 2rem
-      .current-url
-        border-bottom: 2px solid white
-        color: white
-      a 
-        text-decoration: none
-        font-size: 1.8rem
-        letter-spacing: .5px
-        font-weight: bold
-        color: #e6e6e6
-        padding-bottom: .3rem
-        &:hover 
-          border-bottom: 2px solid white
-          color: white
+      text-decoration: none
+      font-size: 18px
+      letter-spacing: .5px
+      font-weight: bold
+      color: #e6e6e6
+      padding-bottom: 0
+      border-bottom: 3px solid rgba(255,255,255,0)
+      transition: .3s all cubic-bezier(.8,0,.74,2);

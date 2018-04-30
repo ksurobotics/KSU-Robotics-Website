@@ -23,7 +23,7 @@ const Header = () => (
             </Link>
           </li>
           <li>
-            <Link activeClassName="current-url" to="/competition">
+            <Link activeClassName="current-url" to="/competitions">
               Competitions
             </Link>
           </li>
