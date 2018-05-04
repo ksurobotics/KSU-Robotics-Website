@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
-import logo from '../images/logo.jpg';
+import logo from '../images/Logo.png';
 
 const Header = () => (
   <div className="header-wrapper">
-    <Link className="site-title" to="/">
-      <h1>KSU Robotics</h1>
+    <Link className="logo" to="/">
+      <img src={logo} alt="KSU Robotics Logo" />
     </Link>
     <div className="nav-wrapper">
       <nav className="main-nav">
@@ -29,8 +29,8 @@ const Header = () => (
           </li>
         </ul>
       </nav>
+      <button>Contact Us!</button>
     </div>
-    <button>Contact Us!</button>
   </div>
 );
 

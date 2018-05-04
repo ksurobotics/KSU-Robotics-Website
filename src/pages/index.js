@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import video from '../images/Robot_Code.mp4';
-import robot from '../images/Robot.jpeg';
 
 const IndexPage = () => (
   <div className="page-wrapper home-page">
@@ -13,14 +11,23 @@ const IndexPage = () => (
         { name: 'keywords', content: 'KSU Robotics' },
       ]}
     />
-    <video autoPlay muted loop src={video} type="video/mp4" alt="A video of code scrolling" />
-
-    <div className="wrapper">
-      <div className="card">
-        <h1>KSU Robotics</h1>
-        <h2>Where Trial and Error is the Only Answer</h2>
+    <div className="hero">
+      <div className="wrapper">
+        <div className="title">
+          <h1>KSU Robotics</h1>
+          <h2>Where Trial and Error is the Only Answer</h2>
+        </div>
+        <div className="card">
+          <h2>Send us an email to learn more</h2>
+          <form action="#">
+            <input type="text" name="fname" placeholder="First Name" />
+            <br />
+            <input type="email" name="email" placeholder="Email" />
+            <br />
+            <input type="submit" value="Contact Us" />
+          </form>
+        </div>
       </div>
-      <img src={robot} alt="A picture of the 2018 K-state Robot" />
     </div>
     <h2>This is a great statement</h2>
     <p>

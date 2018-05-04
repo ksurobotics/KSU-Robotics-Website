@@ -1,17 +1,14 @@
 .header-wrapper
-  background: linear-gradient(to bottom right, #955ddfdd, #512888e0), url("../images/CircuitBoardBackground-small.jpg")
-  background-color: purple
+  position: absolute
+  width: 100%
   display: flex
   align-items: center
-  justify-content: space-between
-  height: 7rem
-  padding: 0 2rem
+  justify-content: space-around
+  height: 9rem
+  padding: 0 6.2rem
   margin-bottom: 1.5rem
-  a.site-title
-      z-index: 2
-  h1
-    color: white
-    font-size: 1.8rem
+  .logo
+    margin-right: auto
   button
     background: white
     color: purple
@@ -27,14 +24,13 @@
       box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.4)
       background: #e6e6e6
 .nav-wrapper
-  width: 100vw
   display: flex
-  justify-content: center
-  position: absolute
-  left: 0
+  align-items: center
 .main-nav
   ul 
     display: flex
+    padding-right: 2.2rem
+    align-items: center
     .current-url, a:hover
       border-bottom: 3px solid white
       color: white
