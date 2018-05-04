@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Alex Wendte <alex@wendtedesigns.com>",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "gatsby": "^1.9.250",
     "gatsby-image": "^1.0.4",
     "gatsby-link": "^1.6.21",
