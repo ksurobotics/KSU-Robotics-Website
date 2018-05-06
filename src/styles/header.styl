@@ -9,27 +9,12 @@
   margin-bottom: 1.5rem
   .logo
     margin-right: auto
-  button
-    background: white
-    color: purple
-    border: none
-    border-radius: 5px
-    padding: .7rem
-    font-size: 18px
-    font-weight: bold
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.4)
-    z-index: 2
-    cursor: pointer
-    &:hover
-      box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.4)
-      background: #e6e6e6
 .nav-wrapper
   display: flex
   align-items: center
 .main-nav
   ul 
     display: flex
-    padding-right: 2.2rem
     align-items: center
     .current-url, a:hover
       border-bottom: 3px solid white
@@ -46,3 +31,8 @@
       padding-bottom: 0
       border-bottom: 3px solid rgba(255,255,255,0)
       transition: .3s all cubic-bezier(.8,0,.74,2);
+@media (max-width: medium-width)
+  .header-wrapper
+    .logo img
+      max-width: 20rem
+    padding: 0 4rem

@@ -5,7 +5,7 @@ yarn-error.log
 
 # Config Files
 /config
-.env.development
+.env*
 
 # Build directory
 /public

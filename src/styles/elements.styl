@@ -1,0 +1,49 @@
+.contact-card
+	background: white
+	border-radius: 6px
+	max-width: 37rem
+	padding: 3rem 3.9rem
+	h2
+		font-size: 2rem
+		text-align: center
+		color: black
+		padding-bottom: 4rem
+	form
+		display: flex
+		flex-direction: column
+		align-items: center
+		input[type=text], input[type=email]
+			margin-bottom: 2rem
+			padding: 1rem 1.5rem
+			border: none
+			background: #EDF0F2
+			border-radius: 6px
+			color: #64717A
+			font-size: 1.4rem
+		input[type=submit]
+			padding: 1.1rem
+			margin-top: 2rem
+	form > *
+		min-width: 29rem
+
+.button
+	border: none
+	border-radius: 6px
+	padding: .7rem
+	font-size: 18px
+	font-weight: bold
+	box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.07)
+	cursor: pointer
+	position: relative
+	transition: all .15s ease
+	&:hover
+		box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.1), 0 4px 7px 0 rgba(0, 0, 0, 0.07)
+		transform: translate3d(0, -1px, 0)
+.button.secondary
+	background: white
+	color: purple
+	&:hover
+		background: #e6e6e6
+.button.primary
+	background: linear-gradient(270deg, #553594 0%, #612694 100%)
+	color: white
