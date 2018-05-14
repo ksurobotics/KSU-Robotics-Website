@@ -14,13 +14,14 @@
   align-items: center
 .main-nav
   ul 
+    margin-right: 2rem
     display: flex
     align-items: center
     .current-url, a:hover
       border-bottom: 3px solid white
       color: white
       padding-bottom: .3rem
-      transition: .3s all cubic-bezier(.52,-1,.26,2);
+      transition: .3s all cubic-bezier(.52,-1,.26,2)
     a 
       margin-left: 2rem
       text-decoration: none
@@ -30,7 +31,11 @@
       color: #e6e6e6
       padding-bottom: 0
       border-bottom: 3px solid rgba(255,255,255,0)
-      transition: .3s all cubic-bezier(.8,0,.74,2);
+      transition: .3s all cubic-bezier(.8,0,.74,2)
+.header-wrapper.general
+  background: linear-gradient(purple1, purple-1)
+  position: relative
+
 @media (max-width: medium-width)
   .header-wrapper
     .logo img

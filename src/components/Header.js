@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
@@ -6,8 +6,11 @@ import Button from '../components/Button';
 
 import logo from '../images/Logo.png';
 
+// The Header has urls that have an active state and an inactive state.
+// The Contact us button does not display on the home page because there
+// Is alreadya contact us button on the home page
 const Header = (props) => (
-  <div className="header-wrapper">
+  <div className={`header-wrapper ${props.location === '/' ? 'home' : 'general'}`}>
     <Link className="logo" to="/">
       <img src={logo} alt="KSU Robotics Logo" />
     </Link>

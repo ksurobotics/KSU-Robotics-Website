@@ -21,7 +21,7 @@ const IndexPage = () => (
         <ContactCard />
       </div>
     </div>
-    <div className="body">
+    <div className="page-wrapper">
       <h2>This is a great statement</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
