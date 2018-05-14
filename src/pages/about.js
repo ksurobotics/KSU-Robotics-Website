@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 const AboutPage = () => (
   <div className="page-wrapper">
     <Helmet
-      title="KSU Robotics || About"
+      title="About Us"
       meta={[
         { name: 'description', content: 'Learn about the KSU robotics club.' },
         { name: 'keywords', content: 'KSU Robotics' },

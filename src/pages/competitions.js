@@ -2,16 +2,33 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
-const CompetitionPage = () => (
+const CompetitionPage = ({ data }) => (
   <div className="page-wrapper">
     <Helmet
-      title="KSU Robotics || Competitions"
+      title="Competitions"
       meta={[
         { name: 'description', content: 'View some of our recent competitions.' },
         { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
       ]}
     />
     <h1>This is the competitions page</h1>
+    <ul>
+      {/* Makes a list of all of the Competitions and links to them */}
+      {data.allWordpressPost.edges.map((competition, i) => {
+        const category = competition.node.categories[0].name;
+        // if category is not competitions
+        if (category !== 'Competitions') return '';
+        const { id, title, slug } = competition.node;
+        return (
+          <li key={id}>
+            <Link to={`/${category}/${slug}`}>
+              {/* replaces non-breaking spaces */}
+              {title.replace('&nbsp;', ' ')}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
@@ -38,3 +55,20 @@ const CompetitionPage = () => (
 );
 
 export default CompetitionPage;
+
+export const competitionsQuery = graphql`
+  query CompetitionsQuery {
+    allWordpressPost {
+      edges {
+        node {
+          id
+          slug
+          title
+          categories {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
