@@ -41,7 +41,6 @@ const RobotsPage = ({ data }) => (
     </p>
   </div>
 );
-
 export default RobotsPage;
 
 export const RobotsQuery = graphql`

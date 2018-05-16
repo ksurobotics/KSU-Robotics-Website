@@ -41,6 +41,7 @@ const CompetitionPage = ({ data }) => (
     </p>
   </div>
 );
+
 export default CompetitionPage;
 
 export const competitionsQuery = graphql`
