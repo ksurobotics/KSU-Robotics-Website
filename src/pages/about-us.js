@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 
 import PageLinks from '../components/PageLinks';
 
-const CompetitionPage = ({ data }) => {
+const AboutPage = ({ data }) => {
   console.log(data.allWordpressPost.edges);
   data.allWordpressPost.edges.map(x => {
     console.log(x.node.slug);
@@ -12,15 +12,15 @@ const CompetitionPage = ({ data }) => {
   return (
     <div className="page-wrapper">
       <Helmet
-        title="Competitions"
+        title="About Us"
         meta={[
-          { name: 'description', content: 'View some of our recent competitions.' },
-          { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
+          { name: 'description', content: 'Learn about the KSU Robotics Club.' },
+          { name: 'keywords', content: 'KSU Robotics' },
         ]}
       />
-      <h1>This is the competitions page</h1>
+      <h1>This is the About page</h1>
       <ul>
-        <PageLinks pages={data.allWordpressPost.edges} category="Competitions" />
+        <PageLinks pages={data.allWordpressPost.edges} category="People" />
       </ul>
       <h2>This is a great statement</h2>
       <p>
@@ -48,10 +48,10 @@ const CompetitionPage = ({ data }) => {
   );
 };
 
-export default CompetitionPage;
+export default AboutPage;
 
-export const competitionsQuery = graphql`
-  query CompetitionsQuery($category: String = "Competitions") {
+export const AboutQuery = graphql`
+  query AboutQuery($category: String = "People") {
     allWordpressPost(filter: { categories: { name: { eq: $category } } }) {
       edges {
         node {

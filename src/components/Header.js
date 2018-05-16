@@ -9,7 +9,7 @@ import logo from '../images/Logo.png';
 // The Header has urls that have an active state and an inactive state.
 // The Contact us button does not display on the home page because there
 // Is alreadya contact us button on the home page
-const Header = (props) => (
+const Header = props => (
   <div className={`header-wrapper ${props.location === '/' ? 'home' : 'general'}`}>
     <Link className="logo" to="/">
       <img src={logo} alt="KSU Robotics Logo" />
@@ -23,7 +23,7 @@ const Header = (props) => (
             </Link>
           </li>
           <li>
-            <Link activeClassName="current-url" to="/about">
+            <Link activeClassName="current-url" to="/about-us">
               About Us
             </Link>
           </li>
