@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
+import PageLinks from '../components/PageLinks';
+
 const CompetitionPage = ({ data }) => (
   <div className="page-wrapper">
     <Helmet
@@ -13,21 +15,7 @@ const CompetitionPage = ({ data }) => (
     />
     <h1>This is the competitions page</h1>
     <ul>
-      {/* Makes a list of all of the Competitions and links to them */}
-      {data.allWordpressPost.edges.map((competition, i) => {
-        const category = competition.node.categories[0].name;
-        // if category is not competitions
-        if (category !== 'Competitions') return '';
-        const { id, title, slug } = competition.node;
-        return (
-          <li key={id}>
-            <Link to={`/${category}/${slug}`}>
-              {/* replaces non-breaking spaces */}
-              {title.replace('&nbsp;', ' ')}
-            </Link>
-          </li>
-        );
-      })}
+      <PageLinks pages={data.allWordpressPost.edges} category="Competitions" />
     </ul>
     <h2>This is a great statement</h2>
     <p>
@@ -57,13 +45,12 @@ const CompetitionPage = ({ data }) => (
 export default CompetitionPage;
 
 export const competitionsQuery = graphql`
-  query CompetitionsQuery {
-    allWordpressPost {
+  query CompetitionsQuery($category: String = "Competitions") {
+    allWordpressPost(filter: { categories: { name: { eq: $category } } }) {
       edges {
         node {
-          id
-          slug
           title
+          slug
           categories {
             name
           }

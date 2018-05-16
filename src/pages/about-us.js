@@ -2,16 +2,21 @@ import React from 'react';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
-const AboutPage = () => (
+import PageLinks from '../components/PageLinks';
+
+const AboutPage = ({ data }) => (
   <div className="page-wrapper">
     <Helmet
       title="About Us"
       meta={[
-        { name: 'description', content: 'Learn about the KSU robotics club.' },
+        { name: 'description', content: 'Learn about the KSU Robotics Club.' },
         { name: 'keywords', content: 'KSU Robotics' },
       ]}
     />
-    <h1>This is the about page</h1>
+    <h1>This is the About page</h1>
+    <ul>
+      <PageLinks pages={data.allWordpressPost.edges} category="People" />
+    </ul>
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
@@ -38,3 +43,19 @@ const AboutPage = () => (
 );
 
 export default AboutPage;
+
+export const AboutQuery = graphql`
+  query AboutQuery($category: String = "People") {
+    allWordpressPost(filter: { categories: { name: { eq: $category } } }) {
+      edges {
+        node {
+          title
+          slug
+          categories {
+            name
+          }
+        }
+      }
+    }
+  }
+`;

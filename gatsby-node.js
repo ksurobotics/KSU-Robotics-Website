@@ -29,7 +29,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
         }
       `
-    ).then((result) => {
+    ).then(result => {
       if (result.errors) {
         console.log(result.errors);
         reject(result.errors);
@@ -39,7 +39,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       // We want to create a detailed page for each
       // post node. We'll just use the Wordpress Slug for the slug.
       // The Post ID is prefixed with 'POST_'
-      _.each(result.data.allWordpressPost.edges, (edge) => {
+      _.each(result.data.allWordpressPost.edges, edge => {
         createPage({
           path: `${edge.node.categories[0].name}/${edge.node.slug}`,
           component: slash(`${edge.node.categories[0].name === 'Competitions' ? competitionTemplate : personTemplate}`),

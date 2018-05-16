@@ -12,7 +12,11 @@ class CompetitionTemplate extends Component {
         url: Competition.featured_media.source_url,
         alt: Competition.featured_media.alt_text,
       };
-    }
+    } else
+      img = {
+        url: 'http://robots.wendtedesigngs.com',
+        alt: 'KSU Robotics homepage',
+      };
 
     return (
       <div className="page-wrapper">
@@ -31,7 +35,7 @@ CompetitionTemplate.propTypes = {
 export default CompetitionTemplate;
 
 export const CompetitionQuery = graphql`
-  query CompititionQuery($id: String!) {
+  query CompetitionQuery($id: String!) {
     wordpressPost(id: { eq: $id }) {
       title
       content

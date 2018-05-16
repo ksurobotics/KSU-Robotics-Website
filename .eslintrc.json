@@ -31,7 +31,7 @@
       }
     ],
     "arrow-body-style": [2, "as-needed"],
-    "arrow-parens": [2, "always"],
+    "arrow-parens": [2, "as-needed"],
     "comma-dangle": 0,
     "import/extensions": 0,
     "no-underscore-dangle": 0,
@@ -67,7 +67,7 @@
         "trailingComma": "es5",
         "singleQuote": true,
         "printWidth": 120,
-        "arrowParens": "always"
+        "arrowParens": "avoid"
       }
     ],
     "react/display-name": 0
