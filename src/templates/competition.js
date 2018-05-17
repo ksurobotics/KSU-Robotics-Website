@@ -14,7 +14,7 @@ class CompetitionTemplate extends Component {
       };
     } else
       img = {
-        url: 'http://robots.wendtedesigngs.com',
+        url: 'http://robots.wendtedesigns.com',
         alt: 'KSU Robotics homepage',
       };
 

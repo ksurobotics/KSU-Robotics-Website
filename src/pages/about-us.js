@@ -15,7 +15,7 @@ const AboutPage = ({ data }) => (
     />
     <h1>This is the About page</h1>
     <ul>
-      <PageLinks pages={data.allWordpressPost.edges} category="People" />
+      <PageLinks pages={data.allWordpressPost.edges} images={data.background} category="People" />
     </ul>
     <h2>This is a great statement</h2>
     <p>
@@ -51,8 +51,21 @@ export const AboutQuery = graphql`
         node {
           title
           slug
+          featured_media {
+            source_url
+          }
           categories {
             name
+          }
+          featured_media {
+            localFile {
+              childImageSharp {
+                id
+                sizes(maxWidth: 1240) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

@@ -54,6 +54,16 @@ export const competitionsQuery = graphql`
           categories {
             name
           }
+          featured_media {
+            localFile {
+              childImageSharp {
+                id
+                sizes(maxWidth: 1240) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
+          }
         }
       }
     }
