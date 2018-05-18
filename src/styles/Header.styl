@@ -1,37 +1,43 @@
 .header-wrapper
+  align-items: center
+  display: flex
+  height: 9rem
+  justify-content: space-around
+  margin-bottom: 1.5rem
+  padding: 0 6.2rem
   position: absolute
   width: 100%
-  display: flex
-  align-items: center
-  justify-content: space-around
-  height: 9rem
-  padding: 0 6.2rem
-  margin-bottom: 1.5rem
+
   .logo
     margin-right: auto
+
 .nav-wrapper
-  display: flex
   align-items: center
+  display: flex
+
 .main-nav
-  ul 
-    margin-right: 2rem
-    display: flex
+  ul
     align-items: center
+    display: flex
+    margin-right: 2rem
+
     .current-url, a:hover
       border-bottom: 3px solid white
       color: white
       padding-bottom: .3rem
-      transition: .3s all cubic-bezier(.52,-1,.26,2)
-    a 
-      margin-left: 2rem
-      text-decoration: none
-      font-size: 18px
-      letter-spacing: .5px
-      font-weight: bold
+      transition: .3s all cubic-bezier(.52, -1, .26, 2)
+
+    a
+      border-bottom: 3px solid rgba(255, 255, 255, 0)
       color: #e6e6e6
+      font-size: 18px
+      font-weight: bold
+      letter-spacing: .5px
+      margin-left: 2rem
       padding-bottom: 0
-      border-bottom: 3px solid rgba(255,255,255,0)
-      transition: .3s all cubic-bezier(.8,0,.74,2)
+      text-decoration: none
+      transition: .3s all cubic-bezier(.8, 0, .74, 2)
+
 .header-wrapper.general
   background: linear-gradient(purple1, purple-1)
   position: relative
@@ -40,4 +46,5 @@
   .header-wrapper
     .logo img
       max-width: 20rem
+
     padding: 0 4rem

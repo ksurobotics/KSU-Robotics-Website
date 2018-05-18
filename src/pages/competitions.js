@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import PageLinks from '../components/PageLinks';
 
 const CompetitionPage = ({ data }) => (
-  <div className="page-wrapper">
+  <div className="page-wrapper blog">
     <Helmet
       title="Competitions"
       meta={[
@@ -13,10 +13,8 @@ const CompetitionPage = ({ data }) => (
         { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
       ]}
     />
-    <h1>This is the competitions page</h1>
-    <ul>
-      <PageLinks pages={data.allWordpressPost.edges} category="Competitions" />
-    </ul>
+    <h1 className="title">This is the competitions page</h1>
+    <PageLinks pages={data.allWordpressPost.edges} defaultImage={data.imageSharp.resolutions} category="Competitions" />
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
@@ -46,6 +44,11 @@ export default CompetitionPage;
 
 export const competitionsQuery = graphql`
   query CompetitionsQuery($category: String = "Competitions") {
+    imageSharp(id: { regex: "/Robot.jpeg/" }) {
+      resolutions(width: 150) {
+        ...GatsbyImageSharpResolutions
+      }
+    }
     allWordpressPost(filter: { categories: { name: { eq: $category } } }) {
       edges {
         node {
@@ -54,12 +57,13 @@ export const competitionsQuery = graphql`
           categories {
             name
           }
+          excerpt
           featured_media {
             localFile {
               childImageSharp {
                 id
-                sizes(maxWidth: 1240) {
-                  ...GatsbyImageSharpSizes
+                resolutions(width: 150) {
+                  ...GatsbyImageSharpResolutions
                 }
               }
             }

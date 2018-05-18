@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import PageLinks from '../components/PageLinks';
 
 const AboutPage = ({ data }) => (
-  <div className="page-wrapper">
+  <div className="page-wrapper blog">
     <Helmet
       title="About Us"
       meta={[
@@ -14,9 +14,7 @@ const AboutPage = ({ data }) => (
       ]}
     />
     <h1>This is the About page</h1>
-    <ul>
-      <PageLinks pages={data.allWordpressPost.edges} images={data.background} category="People" />
-    </ul>
+    <PageLinks pages={data.allWordpressPost.edges} images={data.background} category="People" />
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
