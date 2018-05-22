@@ -1,11 +1,13 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
+import PostMedia from '../components/PostMedia';
 import PageLinks from '../components/PageLinks';
 
+// data is the GraphQL query return data
 const CompetitionPage = ({ data }) => (
-  <div className="page-wrapper blog">
+  <div className="competitions">
     <Helmet
       title="Competitions"
       meta={[
@@ -13,8 +15,21 @@ const CompetitionPage = ({ data }) => (
         { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
       ]}
     />
-    <h1 className="title">This is the competitions page</h1>
-    <PageLinks pages={data.allWordpressPost.edges} defaultImage={data.imageSharp.resolutions} category="Competitions" />
+    {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
+    {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
+    <div className="hero">
+      <h2>{data.allWordpressPost.edges[0].node.title}</h2>
+      {/* I NEED TO MAKE THIS A MUCH BIGGER PICTURE FOR THE MOST RECENT POST */}
+      <PostMedia media={data.allWordpressPost.edges[0].node.featured_media} default={data.imageSharp.resolutions} />
+    </div>
+    <div className="blog">
+      {/* Takes out the first post because it is the hero on this page */}
+      <PageLinks
+        pages={data.allWordpressPost.edges.slice(1)}
+        defaultImage={data.imageSharp.resolutions}
+        category="Competitions"
+      />
+    </div>
     <h2>This is a great statement</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
@@ -40,29 +55,37 @@ const CompetitionPage = ({ data }) => (
   </div>
 );
 
+CompetitionPage.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
 export default CompetitionPage;
 
+// Brings in a default competition image from the images folder.
+// The second query brings in the WordPress posts that have the category of Competitions
 export const competitionsQuery = graphql`
   query CompetitionsQuery($category: String = "Competitions") {
-    imageSharp(id: { regex: "/Robot.jpeg/" }) {
+    imageSharp(id: { regex: "/default-competitions-image.jpeg/" }) {
       resolutions(width: 150) {
         ...GatsbyImageSharpResolutions
       }
     }
-    allWordpressPost(filter: { categories: { name: { eq: $category } } }) {
+    allWordpressPost(filter: { categories: { name: { eq: $category } } }, sort: { fields: [date], order: DESC }) {
       edges {
         node {
+          excerpt
           title
           slug
           categories {
             name
           }
-          excerpt
           featured_media {
+            alt_text
+            title
             localFile {
               childImageSharp {
                 id
-                resolutions(width: 150) {
+                resolutions(width: 150, height: 150) {
                   ...GatsbyImageSharpResolutions
                 }
               }
