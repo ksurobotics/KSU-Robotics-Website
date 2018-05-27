@@ -6,54 +6,64 @@ import PostMedia from '../components/PostMedia';
 import PageLinks from '../components/PageLinks';
 
 // data is the GraphQL query return data
-const CompetitionPage = ({ data }) => (
-  <div className="competitions">
-    <Helmet
-      title="Competitions"
-      meta={[
-        { name: 'description', content: 'View some of our recent competitions.' },
-        { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
-      ]}
-    />
-    {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
-    {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
-    <div className="hero">
-      <h2>{data.allWordpressPost.edges[0].node.title}</h2>
-      {/* I NEED TO MAKE THIS A MUCH BIGGER PICTURE FOR THE MOST RECENT POST */}
-      <PostMedia media={data.allWordpressPost.edges[0].node.featured_media} default={data.imageSharp.resolutions} />
-    </div>
-    <div className="blog">
-      {/* Takes out the first post because it is the hero on this page */}
-      <PageLinks
-        pages={data.allWordpressPost.edges.slice(1)}
-        defaultImage={data.imageSharp.resolutions}
-        category="Competitions"
+const CompetitionPage = ({ data }) => {
+  const latestPost = data.allWordpressPost.edges[0].node;
+  return (
+    <div className="competitions">
+      <Helmet
+        title="Competitions"
+        meta={[
+          { name: 'description', content: 'View some of our recent competitions.' },
+          { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
+        ]}
       />
+      {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
+
+      <div className="hero">
+        {/* Passes the latestPost media, defualt image, and the fact that it is a fluid image to the PostMedia component */}
+        <PostMedia media={latestPost.featured_media} default={data.imageSharp.resolutions} fluid />
+        <h2>{latestPost.title}</h2>
+        <p>
+          {latestPost.excerpt
+            .replace(/<[^>]+>/g, '')
+            .replace('&nbsp;', ' ')
+            .substring(0, 200)}
+        </p>
+      </div>
+      <div className="blog">
+        {/* Takes out the first post because it is the hero on this page */}
+        {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
+        <PageLinks
+          pages={data.allWordpressPost.edges.slice(1)}
+          defaultImage={data.imageSharp.resolutions}
+          category="Competitions"
+        />
+      </div>
+      <h2>This is a great statement</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
+        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
+        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
+        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
+        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
+        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
+        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
+        excepturi exercitationem.
+      </p>
+      <h2>This is another Great Statement!</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
+        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
+        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
+        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
+        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
+        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
+        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
+        excepturi exercitationem.
+      </p>
     </div>
-    <h2>This is a great statement</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-      officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-      aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-      repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-      perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-      perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae illum!
-      Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus excepturi
-      exercitationem.
-    </p>
-    <h2>This is another Great Statement!</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-      officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-      aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-      repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-      perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-      perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae illum!
-      Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus excepturi
-      exercitationem.
-    </p>
-  </div>
-);
+  );
+};
 
 CompetitionPage.propTypes = {
   data: PropTypes.object.isRequired,
@@ -66,7 +76,7 @@ export default CompetitionPage;
 export const competitionsQuery = graphql`
   query CompetitionsQuery($category: String = "Competitions") {
     imageSharp(id: { regex: "/default-competitions-image.jpeg/" }) {
-      resolutions(width: 150) {
+      resolutions(width: 150, height: 150) {
         ...GatsbyImageSharpResolutions
       }
     }
@@ -87,6 +97,9 @@ export const competitionsQuery = graphql`
                 id
                 resolutions(width: 150, height: 150) {
                   ...GatsbyImageSharpResolutions
+                }
+                sizes(maxWidth: 700) {
+                  ...GatsbyImageSharpSizes
                 }
               }
             }

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import Img from 'gatsby-image';
 
 import PostMedia from './PostMedia';
 
@@ -23,12 +22,17 @@ const PageLinks = ({ pages, category, defaultImage }) => {
             <Link to={`/${category}/${slug}`}>
               {/* replaces non-breaking spaces */}
               <h3>{title.replace('&nbsp;', ' ')}</h3>
-              <PostMedia media={featured_media} default={defaultImage} />
+              <PostMedia media={featured_media} default={defaultImage} fluid={false} />
             </Link>
           </div>
           <div className="excerpt">
             {/* strips the excerpt of html tags and trims length to 200 characters */}
-            <p>{excerpt.replace(/<[^>]+>/g, '').substring(0, 200)}</p>
+            <p>
+              {excerpt
+                .replace(/<[^>]+>/g, '')
+                .replace('&nbsp;', ' ')
+                .substring(0, 200)}
+            </p>
           </div>
         </li>
       );
@@ -46,14 +50,5 @@ PageLinks.propTypes = {
 
 // media is the result from the featured_media graphQl query
 // defaultImage is the default image for the given blog type
-const handleMedia = (media, defaultImage) =>
-  media ? (
-    <Img
-      resolutions={media.localFile.childImageSharp.resolutions}
-      alt={media.alt_text ? media.alt_text : media.title}
-    />
-  ) : (
-    <Img resolutions={defaultImage} alt="Default Image" />
-  );
 
 export default PageLinks;
