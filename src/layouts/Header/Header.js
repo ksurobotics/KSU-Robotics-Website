@@ -1,41 +1,40 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 
-import Button from '../components/Button';
-
-import logo from '../images/Logo.png';
+import Button from '../../components/Elements/Button';
+import logo from '../../images/Logo.png';
 
 // The Header has urls that have an active state and an inactive state.
 // The Contact us button does not display on the home page because there
 // Is alreadya contact us button on the home page
 const Header = props => (
   <div className={`header-wrapper ${props.location === '/' ? 'home' : 'general'}`}>
-    <Link className="logo" to="/">
+    <NavLink className="logo" to="/">
       <img src={logo} alt="KSU Robotics Logo" />
-    </Link>
+    </NavLink>
     <div className="nav-wrapper">
       <nav className="main-nav">
         <ul>
           <li>
-            <Link exact activeClassName="current-url" to="/">
+            <NavLink exact activeClassName="current-url" to="/">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link activeClassName="current-url" to="/about-us">
+            <NavLink activeClassName="current-url" to="/about-us">
               About Us
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link activeClassName="current-url" to="/competitions">
+            <NavLink activeClassName="current-url" to="/competitions">
               Competitions
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link activeClassName="current-url" to="/robots">
+            <NavLink activeClassName="current-url" to="/robots">
               Robots
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -43,5 +42,9 @@ const Header = props => (
     </div>
   </div>
 );
+
+Header.propTypes = {
+  location: PropTypes.string.isRequired,
+};
 
 export default Header;

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+// import Link from 'gatsby-link';
+import Link from 'react-dom';
 
-import PostMedia from './PostMedia';
+import ImageTransform from '../../services/ImageTransform';
 
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
@@ -10,10 +11,11 @@ const PageLinks = ({ pages, category, defaultImage }) => {
   // Makes a list of all of the Competitions and links to them
   const linkItems = [];
   // pushes each link to the page into the result array
-  linkItems.push(
-    pages.map(page => {
+  linkItems.push(pages.map(page => {
       // eslint-disable-next-line camelcase
-      const { id, title, slug, featured_media, excerpt } = page.node;
+      const {
+ id, title, slug, featured_media, excerpt 
+} = page.node;
 
       // makes an array of li's
       return (
@@ -22,7 +24,7 @@ const PageLinks = ({ pages, category, defaultImage }) => {
             <Link to={`/${category}/${slug}`}>
               {/* replaces non-breaking spaces */}
               <h3>{title.replace('&nbsp;', ' ')}</h3>
-              <PostMedia media={featured_media} default={defaultImage} fluid={false} />
+              <ImageTransform media={featured_media} default={defaultImage} fluid={false} />
             </Link>
           </div>
           <div className="excerpt">
@@ -36,8 +38,7 @@ const PageLinks = ({ pages, category, defaultImage }) => {
           </div>
         </li>
       );
-    })
-  );
+    }));
   // returns the list of li's encapsulated in a ul
   return <ul className="page-links">{linkItems}</ul>;
 };

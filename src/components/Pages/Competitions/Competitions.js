@@ -1,12 +1,15 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import { graphql } from 'graphql';
 
-import PostMedia from '../components/PostMedia';
-import PageLinks from '../components/PageLinks';
+import ImageTransform from '../../../services/ImageTransform';
+import PageLinks from '../../Elements/PageLinks';
+
+const CompetitionPage = () => <p>Competition Page</p>;
 
 // data is the GraphQL query return data
-const CompetitionPage = ({ data }) => {
+const CompetitionPageOriginal = ({ data }) => {
   const latestPost = data.allWordpressPost.edges[0].node;
   return (
     <div className="competitions">
@@ -20,8 +23,8 @@ const CompetitionPage = ({ data }) => {
       {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
 
       <div className="hero">
-        {/* Passes the latestPost media, defualt image, and the fact that it is a fluid image to the PostMedia component */}
-        <PostMedia media={latestPost.featured_media} default={data.imageSharp.resolutions} fluid />
+        {/* Passes the latestPost media, defualt image, and the fact that it is a fluid image to the ImageTransform component */}
+        <ImageTransform media={latestPost.featured_media} default={data.imageSharp.resolutions} fluid />
         <h2>{latestPost.title}</h2>
         <p>
           {latestPost.excerpt
@@ -73,7 +76,7 @@ export default CompetitionPage;
 
 // Brings in a default competition image from the images folder.
 // The second query brings in the WordPress posts that have the category of Competitions
-export const competitionsQuery = graphql`
+/* export const competitionsQuery = graphql`
   query CompetitionsQuery($category: String = "Competitions") {
     imageSharp(id: { regex: "/default-competitions-image.jpeg/" }) {
       resolutions(width: 150, height: 150) {
@@ -108,4 +111,4 @@ export const competitionsQuery = graphql`
       }
     }
   }
-`;
+`; */

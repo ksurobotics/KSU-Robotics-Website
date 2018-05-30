@@ -1,10 +1,11 @@
 import React from 'react';
-import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
+// import Img from 'gatbsy-image';
 
-const PostMedia = props => {
+const ImageTransform = props => {
   console.log(props.media);
-  if (props.media) {
+  return <p>image</p>;
+  /* if (props.media) {
     if (props.fluid) {
       return (
         <Img
@@ -21,15 +22,16 @@ const PostMedia = props => {
     );
   }
   return <Img resolutions={props.default} alt="Default Image" />;
+  */
 };
 
-PostMedia.propTypes = {
+ImageTransform.propTypes = {
   media: PropTypes.object,
   default: PropTypes.object.isRequired,
   fluid: PropTypes.bool.isRequired,
 };
 
-PostMedia.defaultProps = {
+ImageTransform.defaultProps = {
   media: {},
 };
-export default PostMedia;
+export default ImageTransform;
