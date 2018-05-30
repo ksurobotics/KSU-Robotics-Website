@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import { graphql } from 'graphql';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo'; // they say react-apollo
 
 import ImageTransform from '../../../services/ImageTransform';
 import PageLinks from '../../Elements/PageLinks';
 
-const CompetitionPage = () => <p>Competition Page</p>;
+const GET_RATES = gql`
+  {
+    rates(currency: "USD") {
+      currency
+      rate
+    }
+  }
+`;
 
+// Fetch GraphQL data with a Query component
+const ExchangeRates = () => (
+  <Query query={GET_RATES}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error :(</p>;
+
+      return data.rates.map(({ currency, rate }) => (
+        <div key={currency}>
+          <p>{`${currency}: ${rate}`}</p>
+        </div>
+      ));
+    }}
+  </Query>
+);
+
+const CompetitionPage = () => (
+  <Fragment>
+    <p>Competition Page</p>
+    <ExchangeRates />
+  </Fragment>
+);
 // data is the GraphQL query return data
 const CompetitionPageOriginal = ({ data }) => {
   const latestPost = data.allWordpressPost.edges[0].node;
