@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const cors = require('cors');
+const _ = require('lodash');
+const axios = require('axios');
 
 const PORT = 8000;
 const path = require('path');
@@ -10,19 +12,43 @@ const path = require('path');
 // The GraphQL schema in string form
 const typeDefs = `
   type Query {
-    rates: [Rate] 
+    rates(currency: String!): [ExchangeRate] 
   }
   
-  type Rate { 
+  type ExchangeRate { 
     currency: String,
     rate: String,
     name: String
   }
 `;
 
-// The resolvers
+// Provide resolver functions for your schema fields
 const resolvers = {
-  Query: { rates: () => rates },
+  Query: {
+    rates: async (root, { currency }) => {
+      try {
+        const exchangeRates = await axios.get(`https://api.coinbase.com/v2/exchange-rates?currency=${currency}`);
+        console.log(`firstRes: \n\n${JSON.stringify(exchangeRates.data.data.rates)}`);
+        const newRes = _.map(exchangeRates.data.data.rates, (rate, currency) => ({ currency, rate }));
+        console.log(`newRes: \n\n${newRes}`);
+        return newRes;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
+  ExchangeRate: {
+    name: async ({ currency }) => {
+      try {
+        const currencyData = await axios.get('https://api.coinbase.com/v2/currencies');
+
+        const currencyInfo = currencyData.data.data.find(c => c.id.toUpperCase() === currency);
+        return currencyInfo ? currencyInfo.name : null;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
 };
 
 // Put together a schema
@@ -47,7 +73,11 @@ app.use(router);
 }); */
 
 // The GraphQL endpoint
-app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema }));
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+};
+app.use('/graphql', cors(corsOptions), bodyParser.json(), graphqlExpress({ schema }));
 
 // GraphiQL, a visual editor for queries
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));

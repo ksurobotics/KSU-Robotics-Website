@@ -1,7 +1,9 @@
 /* eslint react/no-danger: 0 */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import Query from 'apollo-client';
 
 class CompetitionTemplate extends Component {
   render() {
@@ -10,12 +12,12 @@ class CompetitionTemplate extends Component {
     if (Competition.featured_media) {
       img = {
         url: Competition.featured_media.source_url,
-        alt: Competition.featured_media.alt_text
+        alt: Competition.featured_media.alt_text,
       };
     } else {
       img = {
-        url: "http://robots.wendtedesigns.com",
-        alt: "KSU Robotics homepage"
+        url: 'http://robots.wendtedesigns.com',
+        alt: 'KSU Robotics homepage',
       };
     }
 
@@ -30,7 +32,7 @@ class CompetitionTemplate extends Component {
 }
 
 CompetitionTemplate.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default CompetitionTemplate;

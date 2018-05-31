@@ -10,8 +10,9 @@ import PageLinks from '../../Elements/PageLinks';
 const GET_RATES = gql`
   {
     rates(currency: "USD") {
-      currency
       rate
+      currency
+      name
     }
   }
 `;
@@ -22,7 +23,7 @@ const ExchangeRates = () => (
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
-
+      console.log(data);
       return data.rates.map(({ currency, rate }) => (
         <div key={currency}>
           <p>{`${currency}: ${rate}`}</p>
@@ -47,13 +48,13 @@ const CompetitionPageOriginal = ({ data }) => {
         title="Competitions"
         meta={[
           { name: 'description', content: 'View some of our recent competitions.' },
-          { name: 'keywords', content: 'KSU Robotics, KSU Robitics competitions' },
+          { name: 'keywords', content: 'KSU Robotics, KSU Robotics competitions' },
         ]}
       />
       {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
 
       <div className="hero">
-        {/* Passes the latestPost media, defualt image, and the fact that it is a fluid image to the ImageTransform component */}
+        {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
         <ImageTransform media={latestPost.featured_media} default={data.imageSharp.resolutions} fluid />
         <h2>{latestPost.title}</h2>
         <p>

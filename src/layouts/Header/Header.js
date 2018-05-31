@@ -7,7 +7,7 @@ import logo from '../../images/Logo.png';
 
 // The Header has urls that have an active state and an inactive state.
 // The Contact us button does not display on the home page because there
-// Is alreadya contact us button on the home page
+// Is already a contact us button on the home page
 const Header = props => (
   <div className={`header-wrapper ${props.location === '/' ? 'home' : 'general'}`}>
     <NavLink className="logo" to="/">
