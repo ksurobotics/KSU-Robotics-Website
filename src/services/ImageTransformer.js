@@ -8,24 +8,6 @@ const ImageTransformer = ({ media, defaultImage }) => {
     return <img src={src} alt={alt || title} title={title} />;
   }
   return <img src={defaultImage} alt="Default" title="Default Image" />;
-  /* if (props.media) {
-      if (props.fluid) {
-      return (
-        <Img
-          sizes={props.media.localFile.childImageSharp.sizes}
-          alt={props.media.alt_text ? props.media.alt_text : props.media.title}
-        />
-      );
-    }
-    return (
-      <Img
-        resolutions={props.media.localFile.childImageSharp.resolutions}
-        alt={props.media.alt_text ? props.media.alt_text : props.media.title}
-      />
-    );
-  }
-  return <Img resolutions={props.default} alt="Default Image" />;
-  */
 };
 
 ImageTransformer.propTypes = {
