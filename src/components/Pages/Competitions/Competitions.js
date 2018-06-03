@@ -8,15 +8,6 @@ import ImageTransform from 'services/ImageTransformer';
 
 // eslint-disable-next-line
 const CompetitionsPage = ({ posts }) => {
-  /* if (!posts) {
-    fetchCompetitionPosts()
-      .then(res => {
-        posts = result;
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  } */
   const latestPost = posts[0];
   if (latestPost) {
     return (
@@ -51,8 +42,8 @@ const CompetitionsPage = ({ posts }) => {
   // if we don't have the posts yet display a loading icon
   return <p>>Loading</p>;
 };
-CompetitionsPage.PropTypes = {
-  posts: PropTypes.object.isRequired,
+CompetitionsPage.propTypes = {
+  posts: PropTypes.array.isRequired,
 };
 
 export default CompetitionsPage;

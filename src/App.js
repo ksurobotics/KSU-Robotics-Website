@@ -15,7 +15,38 @@ class App extends Component {
     postNodes: [],
   };
 
-  componentDidMount() {
+  componentWillMount() {
+    if (typeof Storage !== 'undefined') {
+      if (window.localStorage.postNodes) {
+        this.setState({ postNodes: JSON.parse(window.localStorage.getItem('postNodes')) });
+      } else this.fetchCompetitionPosts({ hasLocalStorage: true });
+    } else this.fetchCompetitionPosts();
+  }
+  GET_POSTS = `
+  {
+    posts(where: {orderby: {field: DATE order: DESC}} ){
+      nodes {
+        id
+        date
+        title
+        excerpt
+        slug
+        categories {
+          nodes {
+            name
+          }
+        }
+        featuredImage {
+          sourceUrl
+          id
+          title
+          altText
+        }
+      }
+    }
+  }
+  `;
+  fetchCompetitionPosts({ hasLocalStorage }) {
     axios
       .post('http://ksurobotics.esy.es/graphql', {
         query: `${this.GET_POSTS}`,
@@ -24,35 +55,12 @@ class App extends Component {
       .then(res => {
         const postNodes = res.data.data.posts.nodes;
         this.setState({ postNodes });
+        if (hasLocalStorage) window.localStorage.setItem('postNodes', JSON.stringify(postNodes));
       })
       .catch(err => {
         console.log(err);
       });
   }
-  GET_POSTS = `
-    {
-      posts {
-        nodes {
-          id
-          date
-          title
-          excerpt
-          slug
-          categories {
-            nodes {
-              name
-            }
-          }
-          featuredImage {
-            sourceUrl
-            id
-            title
-            altText
-          }
-        }
-      }
-    }
-  `;
 
   render() {
     return (
@@ -66,6 +74,7 @@ class App extends Component {
         <Header location={this.props.location.pathname} />
         <Route exact path="/" component={Home} />
         {/* This component allows me to pass props to a component while still routing correctly */}
+        {console.log(this.state.postNodes)}
         <PropsRoute
           path="/competitions"
           component={Competitions}
