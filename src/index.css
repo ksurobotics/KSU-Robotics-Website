@@ -288,6 +288,8 @@ body {
 }
 .page-links li .picture img {
   border-radius: 7.5rem;
+  height: 15rem;
+  object-fit: cover;
   width: 15rem;
 }
 .page-links .excerpt {
@@ -305,6 +307,11 @@ body {
   padding-bottom: 3rem;
   padding-top: 2rem;
   text-align: center;
+}
+.competitions .hero img {
+  height: 250px;
+  margin: 0 auto;
+  width: auto;
 }
 .page-wrapper.home-page {
   padding: 0;

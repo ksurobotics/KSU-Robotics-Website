@@ -6,7 +6,6 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
-import gql from 'graphql-tag';
 
 import Header from './layouts/Header/Header.js';
 import Home from './components/Pages/Home/Home';
@@ -14,7 +13,7 @@ import Competitions from './components/Pages/Competitions/Competitions';
 import Footer from './layouts/Footer/Footer.js';
 
 const cache = new InMemoryCache();
-const link = new HttpLink({ uri: 'http://localhost:8000/graphql' });
+const link = new HttpLink({ uri: 'http://ksurobotics.esy.es/graphql' });
 const client = new ApolloClient({
   link,
   cache,

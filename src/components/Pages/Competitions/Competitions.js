@@ -1,145 +1,73 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo'; // they say react-apollo
 
-import ImageTransform from '../../../services/ImageTransform';
-import PageLinks from '../../Elements/PageLinks';
-
-const GET_RATES = gql`
-  {
-    rates(currency: "USD") {
-      rate
-      currency
-      name
-    }
-  }
-`;
+import defaultImage from 'images/default-competitions-image.jpeg';
+import PageLinks from 'components/Elements/PageLinks';
+import ImageTransform from 'services/ImageTransformer';
 
 // Fetch GraphQL data with a Query component
-const ExchangeRates = () => (
-  <Query query={GET_RATES}>
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
-      console.log(data);
-      return data.rates.map(({ currency, rate }) => (
-        <div key={currency}>
-          <p>{`${currency}: ${rate}`}</p>
-        </div>
-      ));
-    }}
-  </Query>
-);
-
-const CompetitionPage = () => (
-  <Fragment>
-    <p>Competition Page</p>
-    <ExchangeRates />
-  </Fragment>
-);
-// data is the GraphQL query return data
-const CompetitionPageOriginal = ({ data }) => {
-  const latestPost = data.allWordpressPost.edges[0].node;
-  return (
-    <div className="competitions">
-      <Helmet
-        title="Competitions"
-        meta={[
-          { name: 'description', content: 'View some of our recent competitions.' },
-          { name: 'keywords', content: 'KSU Robotics, KSU Robotics competitions' },
-        ]}
-      />
-      {/* JSX Comment <h1 className="title">Past Competitions</h1> */}
-
-      <div className="hero">
-        {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
-        <ImageTransform media={latestPost.featured_media} default={data.imageSharp.resolutions} fluid />
-        <h2>{latestPost.title}</h2>
-        <p>
-          {latestPost.excerpt
-            .replace(/<[^>]+>/g, '')
-            .replace('&nbsp;', ' ')
-            .substring(0, 200)}
-        </p>
-      </div>
-      <div className="blog">
-        {/* Takes out the first post because it is the hero on this page */}
-        {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
-        <PageLinks
-          pages={data.allWordpressPost.edges.slice(1)}
-          defaultImage={data.imageSharp.resolutions}
-          category="Competitions"
-        />
-      </div>
-      <h2>This is a great statement</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
-        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
-        excepturi exercitationem.
-      </p>
-      <h2>This is another Great Statement!</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
-        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
-        excepturi exercitationem.
-      </p>
-    </div>
-  );
-};
-
-CompetitionPage.propTypes = {
-  data: PropTypes.object.isRequired,
-};
-
-export default CompetitionPage;
-
-// Brings in a default competition image from the images folder.
-// The second query brings in the WordPress posts that have the category of Competitions
-/* export const competitionsQuery = graphql`
-  query CompetitionsQuery($category: String = "Competitions") {
-    imageSharp(id: { regex: "/default-competitions-image.jpeg/" }) {
-      resolutions(width: 150, height: 150) {
-        ...GatsbyImageSharpResolutions
-      }
-    }
-    allWordpressPost(filter: { categories: { name: { eq: $category } } }, sort: { fields: [date], order: DESC }) {
-      edges {
-        node {
-          excerpt
+const CompetitionsPage = () => {
+  const GET_POSTS = gql`
+    {
+      posts {
+        nodes {
+          id
+          date
           title
+          excerpt
           slug
           categories {
-            name
-          }
-          featured_media {
-            alt_text
-            title
-            localFile {
-              childImageSharp {
-                id
-                resolutions(width: 150, height: 150) {
-                  ...GatsbyImageSharpResolutions
-                }
-                sizes(maxWidth: 700) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
+            nodes {
+              name
             }
+          }
+          featuredImage {
+            sourceUrl
+            id
+            title
+            altText
           }
         }
       }
     }
-  }
-`; */
+  `;
+  return (
+    <Query query={GET_POSTS}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error :(</p>;
+        const latestPost = data.posts.nodes[0];
+        return (
+          <div className="competitions">
+            <Helmet
+              title="Competitions"
+              meta={[
+                { name: 'description', content: 'View some of our recent competitions.' },
+                { name: 'keywords', content: 'KSU Robotics, KSU Robotics competitions' },
+              ]}
+            />
+            <div className="hero">
+              {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
+              <ImageTransform media={latestPost.featuredImage} defaultImage={defaultImage} />
+              <h2>{latestPost.title}</h2>
+              <p>
+                {latestPost.excerpt
+                  .replace(/<[^>]+>/g, '')
+                  .replace('&nbsp;', ' ')
+                  .substring(0, 200)}
+              </p>
+            </div>
+            <div className="blog">
+              {/* Takes out the first post because it is the hero on this page */}
+              {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
+              <PageLinks pages={data.posts.nodes.slice(1)} defaultImage={defaultImage} category="Competitions" />
+            </div>
+          </div>
+        );
+      }}
+    </Query>
+  );
+};
+export default CompetitionsPage;
