@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Button from '../../components/Elements/Button';
-import logo from '../../images/Logo.png';
+import Button from 'components/Elements/Button';
+import logo from 'images/Logo.png';
 
 // The Header has urls that have an active state and an inactive state.
 // The Contact us button does not display on the home page because there
@@ -22,17 +22,17 @@ const Header = props => (
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="current-url" to="/about-us">
+            <NavLink activeClassName="current-url" to="/About-Us">
               About Us
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="current-url" to="/competitions">
+            <NavLink activeClassName="current-url" to="/Competitions">
               Competitions
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName="current-url" to="/robots">
+            <NavLink activeClassName="current-url" to="/Robots">
               Robots
             </NavLink>
           </li>

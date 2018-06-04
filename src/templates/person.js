@@ -1,35 +1,23 @@
 /* eslint react/no-danger: 0 */
-
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class PersonTemplate extends Component {
-  render() {
-    const Person = this.props.data.wordpressPost;
+import ImageTransformer from 'services/ImageTransformer';
+import defaultImage from 'images/default-person-image.jpeg';
 
-    return (
-      <div className="page-wrapper">
-        <h1>People</h1>
-        <div dangerouslySetInnerHTML={{ __html: Person.content }} />
-      </div>
-    );
-  }
-}
+const PersonTemplate = ({ post = {} }) => {
+  console.log(post);
+  return (
+    <div className="page-wrapper">
+      <h2>{post.title || 'Loading...'}</h2>
+      <ImageTransformer media={post.featuredImage} defaultImage={defaultImage} />
+      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+    </div>
+  );
+};
 
 PersonTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
 };
 
 export default PersonTemplate;
-
-export const PersonQuery = graphql`
-  query PersonQuery($id: String!) {
-    wordpressPost(id: { eq: $id }) {
-      title
-      content
-      featured_media {
-        source_url
-      }
-    }
-  }
-`;

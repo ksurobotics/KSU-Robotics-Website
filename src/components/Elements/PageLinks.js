@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Link from 'gatsby-link';
 import { Link } from 'react-router-dom';
 
 import ImageTransformer from 'services/ImageTransformer';
-
+import { decodeHtml } from 'services/Helpers';
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
 const PageLinks = ({ pages, category, defaultImage }) => {
@@ -20,18 +19,13 @@ const PageLinks = ({ pages, category, defaultImage }) => {
           <div className="picture">
             <Link to={`/${category}/${slug}`}>
               {/* replaces non-breaking spaces */}
-              <h3>{title.replace('&nbsp;', ' ')}</h3>
+              <h3>{decodeHtml(title)}</h3>
               <ImageTransformer media={featuredImage} defaultImage={defaultImage} />
             </Link>
           </div>
           <div className="excerpt">
             {/* strips the excerpt of html tags and trims length to 200 characters */}
-            <p>
-              {excerpt
-                .replace(/<[^>]+>/g, '')
-                .replace('&nbsp;', ' ')
-                .substring(0, 200)}
-            </p>
+            <p>{decodeHtml(excerpt)}</p>
           </div>
         </li>
       );

@@ -6,23 +6,6 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-/*
-client
-  .query({
-    query: gql`
-      {
-        books {
-          title
-          author
-        }
-      }
-    `,
-  })
-  .then(result => console.log(result))
-  .catch(err => {
-    console.log(err);
-  }); */
-
 ReactDOM.render(
   <BrowserRouter>
     <App />

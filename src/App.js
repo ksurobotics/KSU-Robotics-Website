@@ -8,6 +8,9 @@ import PropsRoute from './services/PropsRoute';
 import Header from './layouts/Header/Header.js';
 import Home from './components/Pages/Home/Home';
 import Competitions from './components/Pages/Competitions/Competitions';
+import CompetitionTemplate from './templates/Competition';
+import AboutUs from './components/Pages/AboutUs/AboutUs';
+import PersonTemplate from './templates/Person';
 import Footer from './layouts/Footer/Footer.js';
 
 class App extends Component {
@@ -16,21 +19,26 @@ class App extends Component {
   };
 
   componentWillMount() {
+    // Check whether the browser has local storage
     if (typeof Storage !== 'undefined') {
-      if (window.localStorage.postNodes) {
-        this.setState({ postNodes: JSON.parse(window.localStorage.getItem('postNodes')) });
-      } else this.fetchCompetitionPosts({ hasLocalStorage: true });
+      // if the session storage already contains our posts then the state is set from local storage
+      if (window.sessionStorage.postNodes) {
+        this.setState({ postNodes: JSON.parse(window.sessionStorage.getItem('postNodes')) });
+        // We don't have the posts in session storage, so we are going to get it from the api, but also set local storage to have our posts now.
+      } else this.fetchCompetitionPosts({ hasSessionStorage: true });
+      // The browser doesn't have local storage so we are fetching from the api
     } else this.fetchCompetitionPosts();
   }
+  // Gets all of the information we need from the api
   GET_POSTS = `
   {
     posts(where: {orderby: {field: DATE order: DESC}} ){
       nodes {
-        id
         date
         title
         excerpt
         slug
+        content
         categories {
           nodes {
             name
@@ -46,19 +54,24 @@ class App extends Component {
     }
   }
   `;
-  fetchCompetitionPosts({ hasLocalStorage }) {
+
+  // Fetches data from the api
+  fetchCompetitionPosts({ hasSessionStorage }) {
     axios
       .post('http://ksurobotics.esy.es/graphql', {
         query: `${this.GET_POSTS}`,
         variables: '',
       })
       .then(res => {
+        // makes our data easier to access
         const postNodes = res.data.data.posts.nodes;
+        // sets the state
         this.setState({ postNodes });
-        if (hasLocalStorage) window.localStorage.setItem('postNodes', JSON.stringify(postNodes));
+        // If the browser supports session storage set our posts data as postNodes
+        if (hasSessionStorage) window.sessionStorage.setItem('postNodes', JSON.stringify(postNodes));
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
 
@@ -66,25 +79,41 @@ class App extends Component {
     return (
       <div>
         <Helmet
-          link={[
-            { href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', rel: 'stylesheet' },
-            { rel: 'icon', href: '../../images/kansas-state-wildcats.svg', type: 'image/png' },
-          ]}
+          link={[{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', rel: 'stylesheet' }]}
         />
         <Header location={this.props.location.pathname} />
         <Route exact path="/" component={Home} />
         {/* This component allows me to pass props to a component while still routing correctly */}
-        {console.log(this.state.postNodes)}
         <PropsRoute
-          path="/competitions"
+          exact
+          path="/Competitions"
           component={Competitions}
-          posts={this.state.postNodes.filter(node => node.categories.nodes[0].name === 'Competitions')}
+          posts={this.state.postNodes.filter(node => node.categories.nodes.some(cat => cat.name === 'Competitions'))}
+        />
+        <PropsRoute
+          path="/Competitions/:uri"
+          component={CompetitionTemplate}
+          post={this.state.postNodes.find(
+            post => post.slug === this.props.location.pathname.split('/Competitions/').pop()
+          )}
+        />
+        <PropsRoute
+          exact
+          path="/About-Us"
+          component={AboutUs}
+          posts={this.state.postNodes.filter(node => node.categories.nodes.some(cat => cat.name === 'People'))}
+        />
+        <PropsRoute
+          path="/People/:uri"
+          component={PersonTemplate}
+          post={this.state.postNodes.find(post => post.slug === this.props.location.pathname.split('/People/').pop())}
         />
         <Footer />
       </div>
     );
   }
 }
+// Allows App to access the location prop
 export default withRouter(App);
 
 App.propTypes = {

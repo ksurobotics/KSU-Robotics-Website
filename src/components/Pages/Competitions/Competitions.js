@@ -2,9 +2,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import defaultImage from 'images/default-competitions-image.jpeg';
 import PageLinks from 'components/Elements/PageLinks';
 import ImageTransform from 'services/ImageTransformer';
+import defaultImage from 'images/default-competition-image.jpeg';
+import { decodeHtml } from 'services/Helpers';
 
 // eslint-disable-next-line
 const CompetitionsPage = ({ posts }) => {
@@ -23,12 +24,10 @@ const CompetitionsPage = ({ posts }) => {
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransform media={latestPost.featuredImage} defaultImage={defaultImage} />
-          <h2>{latestPost.title}</h2>
+          <h2>{decodeHtml(latestPost.title)}</h2>
           <p>
-            {latestPost.excerpt
-              .replace(/<[^>]+>/g, '')
-              .replace('&nbsp;', ' ')
-              .substring(0, 200)}
+            {// removes html tags
+            decodeHtml(latestPost.excerpt)}
           </p>
         </div>
         <div className="blog">

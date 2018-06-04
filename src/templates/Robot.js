@@ -3,9 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ImageTransformer from 'services/ImageTransformer';
-import defaultImage from 'images/default-competition-image.jpeg';
+import defaultImage from 'images/default-robot-image.svg';
 
-const CompetitionTemplate = ({ post = {} }) => (
+const RobotTemplate = ({ post = {} }) => (
   <div className="page-wrapper">
     <h2>{post.title || 'Loading...'}</h2>
     <ImageTransformer media={post.featuredImage} defaultImage={defaultImage} />
@@ -13,8 +13,8 @@ const CompetitionTemplate = ({ post = {} }) => (
   </div>
 );
 
-CompetitionTemplate.propTypes = {
+RobotTemplate.propTypes = {
   post: PropTypes.object.isRequired,
 };
 
-export default CompetitionTemplate;
+export default RobotTemplate;
