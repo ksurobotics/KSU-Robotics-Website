@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import PageLinks from 'components/Elements/PageLinks';
+import BlogLinks from 'components/Elements/BlogLinks';
 import ImageTransform from 'services/ImageTransformer';
 import defaultImage from 'images/default-competition-image.jpeg';
 import { decodeHtml } from 'services/Helpers';
@@ -33,7 +33,7 @@ const CompetitionsPage = ({ posts }) => {
         <div className="blog">
           {/* Takes out the first post because it is the hero on this page */}
           {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
-          <PageLinks pages={posts.slice(1)} defaultImage={defaultImage} category="Competitions" />
+          <BlogLinks pages={posts.slice(1)} defaultImage={defaultImage} category="Competitions" />
         </div>
       </div>
     );

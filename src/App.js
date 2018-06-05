@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { withRouter, Route } from 'react-router';
 import axios from 'axios';
+import some from 'lodash/some';
+import filter from 'lodash/filter';
 
 import PropsRoute from './services/PropsRoute';
 import Header from './layouts/Header/Header.js';
@@ -88,7 +90,7 @@ class App extends Component {
           exact
           path="/Competitions"
           component={Competitions}
-          posts={this.state.postNodes.filter(node => node.categories.nodes.some(cat => cat.name === 'Competitions'))}
+          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'Competitions'))}
         />
         <PropsRoute
           path="/Competitions/:uri"
@@ -101,7 +103,7 @@ class App extends Component {
           exact
           path="/About-Us"
           component={AboutUs}
-          posts={this.state.postNodes.filter(node => node.categories.nodes.some(cat => cat.name === 'People'))}
+          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'People'))}
         />
         <PropsRoute
           path="/People/:uri"

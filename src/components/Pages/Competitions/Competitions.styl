@@ -1,6 +1,45 @@
 .competitions
+	.blog
+		max-width: 100%
+		width: auto
+
 	.hero
 		img
 			height: 250px
 			margin: 0 auto
 			width: auto
+
+	ul
+		display: flex
+		justify-content: center
+		padding-top: 4rem
+
+	li
+		align-items: center
+		background: lightgray
+		border-radius: 5px
+		display: flex
+		flex-direction: column
+		height: 25rem
+		justify-content: space-between
+		margin: 0 5rem
+		padding: 1rem
+		position: relative
+		transition: all .3s cubic-bezier(.47, 0, .745, .715)
+		width: 25rem
+
+		.button
+			background: rgba(0, 0, 0, 0)
+			box-shadow: none
+			color: rgba(0, 0, 0, 0)
+			transition: all .2s cubic-bezier(.47, 0, .745, .715)
+
+		&:hover
+			height: 26rem
+			transform: rotate3d(0, 0, 1, 1deg) translate3d(-10px, -10px, 0)
+			width: 26rem
+
+			.button
+				background: purple
+				color: white
+				transition: all .4s cubic-bezier(.47, 0, .745, .715) .1s

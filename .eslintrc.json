@@ -28,7 +28,7 @@
         "argsIgnorePattern": "res|next|^err"
       }
     ],
-    "no-console": 0,
+    "no-console": 1,
     "prefer-const": [
       "error",
       {

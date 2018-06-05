@@ -308,16 +308,55 @@ body {
   padding-top: 2rem;
   text-align: center;
 }
+.competitions .blog {
+  max-width: 100%;
+  width: auto;
+}
 .competitions .hero img {
   height: 250px;
   margin: 0 auto;
   width: auto;
 }
+.competitions ul {
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+}
+.competitions li {
+  align-items: center;
+  background: #d3d3d3;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 25rem;
+  justify-content: space-between;
+  margin: 0 5rem;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.47, 0, 0.745, 0.715);
+  width: 25rem;
+}
+.competitions li .button {
+  background: rgba(0,0,0,0);
+  box-shadow: none;
+  color: rgba(0,0,0,0);
+  transition: all 0.2s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+.competitions li:hover {
+  height: 26rem;
+  transform: rotate3d(0, 0, 1, 1deg) translate3d(-10px, -10px, 0);
+  width: 26rem;
+}
+.competitions li:hover .button {
+  background: #512888;
+  color: #fff;
+  transition: all 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) 0.1s;
+}
 .page-wrapper.home-page {
   padding: 0;
 }
 .home-page .hero {
-  background: #512888 url("images/Homepage-Background.svg") no-repeat bottom;
+  background: #512888 url("images/Background-Desktop.svg") no-repeat bottom;
   background-size: cover;
   height: 800px;
   padding-top: 90px;
