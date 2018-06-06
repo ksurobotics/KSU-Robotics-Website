@@ -38,7 +38,7 @@ const Header = props => (
           </li>
         </ul>
       </nav>
-      <Button text="Contact Us!" className={`secondary ${props.location === '/' ? 'hidden' : ''}`} />
+      <Button className={`secondary ${props.location === '/' ? 'hidden' : ''}`}>Contact Us!</Button>
     </div>
   </div>
 );
