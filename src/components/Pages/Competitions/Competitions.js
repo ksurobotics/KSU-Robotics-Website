@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import BlogLinks from 'components/Elements/BlogLinks';
 import ImageTransform from 'services/ImageTransformer';
+import Button from 'components/Elements/Button';
+
 import defaultImage from 'images/default-competition-image.jpeg';
 import { decodeHtml } from 'services/Helpers';
 
@@ -24,11 +26,14 @@ const CompetitionsPage = ({ posts }) => {
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransform media={latestPost.featuredImage} defaultImage={defaultImage} />
-          <h2>{decodeHtml(latestPost.title)}</h2>
-          <p>
-            {// removes html tags
-            decodeHtml(latestPost.excerpt)}
-          </p>
+          <div className="card">
+            <h2>{decodeHtml(latestPost.title)}</h2>
+            <p>
+              {// removes html tags
+              decodeHtml(latestPost.excerpt)}
+            </p>
+            <Button className="primary">View Competition</Button>
+          </div>
         </div>
         <div className="blog">
           {/* Takes out the first post because it is the hero on this page */}

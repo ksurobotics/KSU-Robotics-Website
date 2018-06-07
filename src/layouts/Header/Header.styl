@@ -2,45 +2,69 @@
   align-items: center
   display: flex
   height: 9rem
-  justify-content: space-around
+  justify-content: space-between
   padding: 0 6.2rem
   position: absolute
-  width: 100%
-
-  .logo
-    margin-right: auto
 
 .nav-wrapper
   align-items: center
   display: flex
 
-.main-nav
+.header-wrapper
   ul
     align-items: center
     display: flex
     margin-right: 2rem
 
     .current-url, a:hover
-      border-bottom: 3px solid white
-      color: white
-      padding-bottom: .3rem
-      transition: .3s all cubic-bezier(.52, -1, .26, 2)
+      transition: .3s all cubic-bezier(.52, 0, .26, 1.2)
 
     a
-      border-bottom: 3px solid rgba(255, 255, 255, 0)
-      color: #e6e6e6
       font-size: 18px
       font-weight: bold
       letter-spacing: .5px
       margin-left: 2rem
       padding-bottom: 0
       text-decoration: none
-      transition: .3s all cubic-bezier(.8, 0, .74, 2)
+      transition: .3s all cubic-bezier(.8, 0, .74, 1.2)
+
+.header-wrapper.home
+  width: 100%
+
+  .logo
+    margin-right: auto
+
+  .nav-wrapper
+    .current-url, a:hover
+      border-bottom: 3px solid white
+      color: white
+      padding-bottom: .3rem
+
+    a
+      border-bottom: 4px solid rgba(255, 255, 255, 0)
+      color: white
 
 .header-wrapper.general
-  background: linear-gradient(purple1, purple-1)
-  box-shadow: 0 15px 35px rgba(37, 41, 82, .15), 0 5px 15px rgba(0, 0, 0, .1)
+  background: white
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .03), 0 5px 15px rgba(0, 0, 0, .04)
+  height: 47px
   position: relative
+
+  .nav-wrapper
+    .current-url, a:hover
+      border-bottom: 3px solid purple
+      color: purple
+
+    a
+      border-bottom: 4px solid rgba(255, 255, 255, 0)
+      color: rgba(81, 40, 136, 50%)
+      font-size: 1.3rem
+      padding-bottom: 1rem
+
+  .button
+    border-radius: 1.5rem
+    font-size: 1.3rem
+    padding: .7rem 1.5rem
 
 @media (max-width: medium-width)
   .header-wrapper
