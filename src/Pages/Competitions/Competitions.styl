@@ -1,78 +1,99 @@
+/*
+ *  Styles for the competition Page
+ */
 .competitions
-	.blog
-		max-width: 100%
-		width: auto
-
+	/*
+	 *  Styles for the hero image above the fold
+	 */
 	.hero
 		margin-top: 6rem
+		// NEED TO DECREASE THIS PADDING
 		padding: 0 10rem 5rem
+		position: relative
 		width: 100%
 
+		// An image that is 55rem high and is grayscale
+		// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
 		img
 			border-radius: 5px
 			filter: grayscale(100%)
-			height: 45rem
+			height: 55rem
 			object-fit: cover
 			width: 100%
 
+		// Moves the card to be in the middle of the image
+		// Also sets the background to a slightly transparant purple
 		.card
 			align-items: center
-			background: rgba(81, 40, 136, 50%)
+			background: rgba(81, 40, 136, 65%)
 			border-radius: 5px
-			bottom: 37.6rem
 			color: white
 			display: flex
 			flex-direction: column
+			left: 0
 			margin: 0 auto
+			max-width: 63rem
 			padding: 2.5rem 0 3.5rem
-			position: relative
+			position: absolute
+			right: 0
 			text-align: center
-			width: 60%
+			top: 12rem
 
+			// Text shadow for better readability
+			// WHY IS THE PADDING LIKE IT IS?
 			p
+				font-size: 1.8rem
 				padding: 2rem 4rem 3rem
 				text-shadow: 4px 0 4px rgba(0, 0, 0, 50%)
 
 			.button
 				background: none
 				border: solid 2px white
-				margin: auto
 				padding: 1.5rem 2.7rem
 
+	/*
+	 *  Styles for the Blog Posts
+	 */
 	ul
 		display: flex
+		flex-wrap: wrap
 		justify-content: center
 		padding-top: 4rem
 
-	li
-		align-items: center
-		background: lightgray
+	// Transition is for the whole card.
+	// Fixed with because?
+	.card.blog-links
 		border-radius: 5px
-		display: flex
-		flex-direction: column
-		height: 25rem
-		justify-content: space-between
-		margin: 0 5rem
-		padding: 1rem
-		position: relative
+		box-shadow: 0 8px 10px rgba(0, 0, 0, .15), 0 8px 25px rgba(0, 0, 0, .1)
+		margin: 3rem 5rem
 		transition: all .3s cubic-bezier(.47, 0, .745, .715)
-		width: 25rem
+		width: 40.1rem
 
-		.button
-			background: rgba(0, 0, 0, 0)
-			box-shadow: none
-			color: rgba(0, 0, 0, 0)
-			transition: all .2s cubic-bezier(.47, 0, .745, .715)
-
+		// When the card is hovered, it is roted and moved slightly
 		&:hover
-			height: 26rem
 			transform: rotate3d(0, 0, 1, 1deg) translate3d(-10px, -10px, 0)
-			width: 26rem
 
-			.button
+			// On hover, there is a delay in the button's appearance
+			li > .button
 				background: purple
 				color: white
+				position: relative
 				transition: all .2s cubic-bezier(.47, 0, .745, .715) .1s
+
+		li
+			align-items: center
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			padding: 1rem
+			position: relative
+
+			.button
+				background: rgba(0, 0, 0, 0)
+				box-shadow: none
+				color: rgba(0, 0, 0, 0)
+				position: absolute
+				transition: all .2s cubic-bezier(.47, 0, .745, .715)
 
 .competitions.nav-wrapper
 	background: black

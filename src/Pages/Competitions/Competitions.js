@@ -25,15 +25,15 @@ const CompetitionsPage = ({ posts }) => {
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransformer media={latestPost.featuredImage} defaultImage={defaultImage} />
           <div className="card">
-            <h2>{Helpers.decodeHtml(latestPost.title)}</h2>
-            <p>
+            <h2 className="title">{Helpers.decodeHtml(latestPost.title)}</h2>
+            <p className="excerpt">
               {// removes html tags
               Helpers.decodeHtml(latestPost.excerpt)}
             </p>
             <Button className="primary">View Competition</Button>
           </div>
         </div>
-        <div className="blog">
+        <div className="content">
           {/* Takes out the first post because it is the hero on this page */}
           {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
           <BlogLinks pages={posts.slice(1)} defaultImage={defaultImage} category="Competitions" />
