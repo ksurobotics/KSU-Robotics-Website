@@ -3,17 +3,10 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { withRouter, Route } from 'react-router';
 import axios from 'axios';
-import some from 'lodash/some';
-import filter from 'lodash/filter';
+import { some, filter } from 'lodash';
 
-import PropsRoute from './services/PropsRoute';
-import Header from './layouts/Header/Header.js';
-import Home from './components/Pages/Home/Home';
-import Competitions from './components/Pages/Competitions/Competitions';
-import CompetitionTemplate from './templates/Competition';
-import AboutUs from './components/Pages/AboutUs/AboutUs';
-import PersonTemplate from './templates/Person';
-import Footer from './layouts/Footer/Footer.js';
+import { PropsRoute } from 'Utilities';
+import { Header, Footer, Home, Competitions, AboutUs, CompetitionTemplate, PersonTemplate, RobotTemplate } from 'Pages';
 
 class App extends Component {
   state = {

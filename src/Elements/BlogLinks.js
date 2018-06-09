@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import map from 'lodash/map';
-import BlogLink from './BlogLink';
+import { BlogLink } from './';
 
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type

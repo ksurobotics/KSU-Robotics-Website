@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ImageTransformer from 'services/ImageTransformer';
-import defaultImage from 'images/default-robot-image.svg';
+import { ImageTransformer } from 'Utilities';
+import defaultImage from 'assets/images/default-robot-image.svg';
 
 const RobotTemplate = ({ post = {} }) => (
   <div className="page-wrapper">

@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import ImageTransformer from 'services/ImageTransformer';
-import { decodeHtml } from 'services/Helpers';
-import Button from './Button';
+import { ImageTransformer, Helpers } from 'Utilities';
+import { Button } from 'Elements';
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
 const BlogLink = ({ page, category, defaultImage }) => {
@@ -14,13 +13,13 @@ const BlogLink = ({ page, category, defaultImage }) => {
       <div className="picture">
         <Link to={`/${category}/${slug}`}>
           {/* replaces non-breaking spaces */}
-          <h3>{decodeHtml(title)}</h3>
+          <h3>{Helpers.decodeHtml(title)}</h3>
           <ImageTransformer media={featuredImage} defaultImage={defaultImage} />
         </Link>
       </div>
       <div className="excerpt">
         {/* strips the excerpt of html tags and trims length to 200 characters */}
-        <p>{decodeHtml(excerpt)}</p>
+        <p>{Helpers.decodeHtml(excerpt)}</p>
       </div>
       <Button className="button">Read More</Button>
     </li>

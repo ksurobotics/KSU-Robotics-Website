@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ImageTransformer from 'services/ImageTransformer';
-import defaultImage from 'images/default-person-image.jpeg';
+import { ImageTransformer } from 'Utilities';
+import defaultImage from 'assets/images/default-person-image.jpeg';
 
 const PersonTemplate = ({ post = {} }) => {
   console.log(post);

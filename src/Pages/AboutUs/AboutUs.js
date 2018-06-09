@@ -2,8 +2,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import BlogLinks from 'components/Elements/BlogLinks';
-import defaultImage from 'images/default-person-image.jpeg';
+import { BlogLinks } from 'Elements/';
+import defaultImage from 'assets/images/default-person-image.jpeg';
 
 // eslint-disable-next-line
 const AboutUsPage = ({ posts }) => {

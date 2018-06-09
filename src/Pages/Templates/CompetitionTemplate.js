@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ImageTransformer from 'services/ImageTransformer';
-import defaultImage from 'images/default-competition-image.jpeg';
+import { ImageTransformer } from 'Utilities';
+import defaultImage from 'assets/images/default-competition-image.jpeg';
 
 const CompetitionTemplate = ({ post = {} }) => (
   <div className="page-wrapper">

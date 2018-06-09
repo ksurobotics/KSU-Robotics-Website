@@ -19,8 +19,8 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "build-css": "stylus src/stylus/index.styl -o src",
-    "css": "npm run build-css && stylus -w src/stylus/index.styl -o src",
+    "build-css": "stylus src/assets/stylus/index.styl -o src",
+    "css": "npm run build-css && stylus -w src/assets/stylus/index.styl -o src",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
     "server-js": "nodemon --watch server server/server.js",
