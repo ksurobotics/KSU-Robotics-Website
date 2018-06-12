@@ -3,13 +3,13 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import { BlogLinks } from 'Elements/';
-import defaultImage from 'assets/images/default-person-image.jpeg';
+import defaultImage from 'assets/images/default-robot-image.svg';
 
 // eslint-disable-next-line
-const AboutUsPage = ({ posts }) => {
+const RobotsPage = ({ posts }) => {
   if (posts) {
     return (
-      <div className="people">
+      <div className="robots">
         {/* Sets the headers for the competitions page */}
         <Helmet
           title="About Us"
@@ -20,7 +20,7 @@ const AboutUsPage = ({ posts }) => {
         />
         <div className="blog">
           {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
-          <BlogLinks pages={posts} defaultImage={defaultImage} category="People" />
+          <BlogLinks pages={posts} defaultImage={defaultImage} category="Robots" />
         </div>
       </div>
     );
@@ -28,8 +28,8 @@ const AboutUsPage = ({ posts }) => {
   // if we don't have the posts yet display a loading icon
   return <p>>Loading</p>;
 };
-AboutUsPage.propTypes = {
+RobotsPage.propTypes = {
   posts: PropTypes.array.isRequired,
 };
 
-export default AboutUsPage;
+export default RobotsPage;

@@ -6,7 +6,17 @@ import axios from 'axios';
 import { some, filter } from 'lodash';
 
 import { PropsRoute } from 'Utilities';
-import { Header, Footer, Home, Competitions, AboutUs, CompetitionTemplate, PersonTemplate, RobotTemplate } from 'Pages';
+import {
+  Header,
+  Footer,
+  Home,
+  Competitions,
+  Robots,
+  AboutUs,
+  CompetitionTemplate,
+  PersonTemplate,
+  RobotTemplate,
+} from 'Pages';
 
 class App extends Component {
   state = {
@@ -102,6 +112,18 @@ class App extends Component {
           path="/People/:uri"
           component={PersonTemplate}
           post={this.state.postNodes.find(post => post.slug === this.props.location.pathname.split('/People/').pop())}
+        />
+        <Footer />
+        <PropsRoute
+          exact
+          path="/Robots"
+          component={Robots}
+          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'Robots'))}
+        />
+        <PropsRoute
+          path="/Robots/:uri"
+          component={RobotTemplate}
+          post={this.state.postNodes.find(post => post.slug === this.props.location.pathname.split('/Robots/').pop())}
         />
         <Footer />
       </div>
