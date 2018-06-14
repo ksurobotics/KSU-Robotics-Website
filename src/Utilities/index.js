@@ -1,5 +1,5 @@
 // import * as Cloudinary from './Cloudinary';
-import * as Helpers from './Helpers';
+import * as Helpers from './helpers';
 import ImageTransformer from './ImageTransformer';
 import PropsRoute from './PropsRoute';
 
