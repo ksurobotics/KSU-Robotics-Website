@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import ContactCard from '../../Elements/ContactCard';
+import { ContactCard } from 'Elements';
 
 const IndexPage = () => (
   <div className="page-wrapper home-page">

@@ -23,7 +23,7 @@
 
 		// Moves the card to be in the middle of the image
 		// Also sets the background to a slightly transparant purple
-		.card
+		.hero-card
 			align-items: center
 			background: rgba(81, 40, 136, 65%)
 			border-radius: .5rem
@@ -52,56 +52,82 @@
 				padding: 1.5rem 2.7rem
 
 	/*
-	 *  Styles for the Blog Posts
+	 *  Styles for the Blog Post Links
 	 */
 	ul
+		align-items: center
 		display: flex
 		flex-wrap: wrap
 		justify-content: center
 
+	// The content of the card.
 	// Transition is for the whole card.
 	// Fixed with because?
-	.card.blog-links
-		border-radius: 5px
-		box-shadow: 0 8px 10px rgba(0, 0, 0, .15), 0 8px 25px rgba(0, 0, 0, .1)
-		margin: 3rem 5rem
-		transition: all .3s cubic-bezier(.47, 0, .745, .715)
-		width: 40.1rem
+	li.blog-links-card
+		margin: 3rem
+		easeOutCubic(.3)
+		display: block
+		// 
+		height: 0%
+		padding: 2rem
+		width: 30rem
+
+		.picture
+			margin: 0 auto
+
+		// Blog link image
+		img
+			border-radius: 9rem
+			height: 17.5rem
+			padding-bottom: 1rem
+			width: @height
+
+		// Blog link header
+		h3
+			padding-bottom: 2rem
+			padding-top: .5rem
+
+		.excerpt
+			display: block
+
+		a
+			height: 0
+			easeOutCubic(.3s)
+			display: block
+
+		// Blog link button
+		// This handles the button's transition state when the card is not hovered
+		// The definition needs to be here because of the wrapper hover state
+		.button
+			background: rgba(0, 0, 0, 0)
+			box-shadow: none
+			color: rgba(0, 0, 0, 0)
+			font-size: 1.8rem
+			font-weight: 500
+			height: 0
+			margin-top: 0
+			padding: 0
+			position: relative
+			// allows the button to fly in from the top
+			transform: translateY(-2rem)
+			z-index: 2
 
 		// When the card is hovered, it is roted and moved slightly
 		&:hover
-			transform: rotate3d(0, 0, 1, 1deg) translate3d(-10px, -10px, 0)
+			transform: rotate(1deg) translateX(-10px) translateY(-10px)
+			easeInCubic(.2)
+
+			a
+				height: auto
+				easeInCubic(.3)
 
 			// This handles the button's transition state when the card is hovered
-			li > .button
-				background: purple
-				color: white
-				position: relative
-				transition: all .2s cubic-bezier(.47, 0, .745, .715)
-
-		li
-			align-items: center
-			color: black
-			display: flex
-			flex-direction: column
-			justify-content: space-between
-			padding: 1.5rem
-			position: relative
-
-			img
-				border-radius: 112.5rem
-				height: 22.5rem
-				padding-bottom: 1rem
-				width: 22.5rem
-
-			h3
-				padding-bottom: 2rem
-				padding-top: 1rem
-
-			// This handles the button's transition state when the card is not hovered
 			.button
-				background: rgba(0, 0, 0, 0)
-				box-shadow: none
-				color: rgba(0, 0, 0, 0)
-				position: absolute
-				transition: all .2s cubic-bezier(.47, 0, .745, .715)
+				background: purple
+				margin-top: 1.5rem
+				elevation(3)
+				color: white
+				height: auto
+				padding: .7rem 2rem
+				transform: translateY(0)
+				transition-delay: .5s

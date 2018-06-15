@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContactCard = () => (
-  <div className="contact-card">
+  <div className="card contact-card">
     <h2>Send us an email to learn more</h2>
     <form action="#">
       <input type="text" name="fname" placeholder="First Name" />

@@ -113,7 +113,6 @@ class App extends Component {
           component={PersonTemplate}
           post={this.state.postNodes.find(post => post.slug === this.props.location.pathname.split('/People/').pop())}
         />
-        <Footer />
         <PropsRoute
           exact
           path="/Robots"
