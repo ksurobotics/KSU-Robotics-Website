@@ -9,19 +9,17 @@ import { Button } from 'Elements';
 const BlogLink = ({ page, category, defaultImage }) => {
   const { title, slug, featuredImage, excerpt } = page;
   return (
-    <li className="card blog-links-card">
-      <div className="picture">
-        {/* replaces non-breaking spaces */}
-        <h3>{Helpers.decodeHtml(title)}</h3>
-        <ImageTransformer media={featuredImage} defaultImage={defaultImage} />
-      </div>
-      {/* strips the excerpt of html tags and trims length to 200 characters */}
-      <p className="excerpt">{Helpers.decodeHtml(excerpt)}</p>
-
-      <Link to={`/${category}/${slug}`}>
-        <Button className="button">Read More</Button>
-      </Link>
-    </li>
+    <Link to={`/${category}/${slug}`}>
+      <li className="card blog-links-card">
+        <div className="picture">
+          {/* replaces non-breaking spaces */}
+          <h3>{Helpers.decodeHtml(title)}</h3>
+          <ImageTransformer media={featuredImage} defaultImage={defaultImage} />
+        </div>
+        {/* strips the excerpt of html tags and trims length to 200 characters */}
+        <p className="excerpt">{Helpers.decodeHtml(excerpt)}</p>
+      </li>
+    </Link>
   );
 };
 BlogLink.propTypes = {

@@ -30,3 +30,19 @@ easeInCubic(seconds = .2)
 
 easeOutCubic(seconds = .2)
 	transition: all unit(seconds, 's') cubic-bezier(.215, .61, .355, 1)
+
+phone()
+	@media (max-width: 599px)
+		{block}
+
+tablet-port()
+	@media (max-width: 600px)
+		{block}
+
+tablet-land()
+	@media (max-width: 900px)
+		{block}
+
+desktop()
+	@media (max-width: 1200px)
+		{block}

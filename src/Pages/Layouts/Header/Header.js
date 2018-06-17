@@ -11,40 +11,39 @@ import purpleLogo from 'assets/images/Purple-Logo.png';
 // Is already a contact us button on the home page
 class Header extends Component {
   render() {
+    // This will take away the active-url's underline. I believe I should actually just do this logic myslef...
     const hover = () => {
-      console.log(this.className);
-      console.log(this);
+      // console.log(this.className);
+      // console.log(this);
     };
     return (
       <div className={`header-wrapper ${this.props.location === '/' ? 'home' : 'general'}`}>
         <NavLink className="logo" to="/">
           <img src={this.props.location === '/' ? logo : purpleLogo} alt="KSU Robotics Logo" />
         </NavLink>
-        <div className="nav-wrapper">
-          <ul className="main-nav">
-            <li>
-              <NavLink exact activeClassName="current-url" to="/">
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName="current-url" onMouseOver={hover} onFocus={hover} to="/About-Us">
-                About Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName="current-url" to="/Competitions">
-                Competitions
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName="current-url" to="/Robots">
-                Robots
-              </NavLink>
-            </li>
-          </ul>
-          <Button className={`primary ${this.props.location === '/' ? 'hidden' : ''}`}>Contact Us!</Button>
-        </div>
+        <ul className="main-nav">
+          <li>
+            <NavLink exact activeClassName="current-url" to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="current-url" onMouseOver={hover} onFocus={hover} to="/About-Us">
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="current-url" to="/Competitions">
+              Competitions
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName="current-url" to="/Robots">
+              Robots
+            </NavLink>
+          </li>
+        </ul>
+        <Button className={`primary ${this.props.location === '/' ? 'hidden' : ''}`}>Contact Us!</Button>
       </div>
     );
   }

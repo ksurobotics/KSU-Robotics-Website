@@ -6,35 +6,39 @@
   padding: 0 6.2rem
   position: absolute
 
-.nav-wrapper
-  align-items: center
-  display: flex
-
 .header-wrapper
-  ul
+  ul.main-nav
     align-items: center
     display: flex
     margin-right: 2rem
 
-    .current-url, a:hover
-      transition: .3s all cubic-bezier(.52, 0, .26, 1.2)
-
     a
-      font-size: 18px
+      font-size: 1.8rem
       font-weight: bold
       letter-spacing: .5px
       margin-left: 2rem
       padding-bottom: 0
       text-decoration: none
-      transition: .3s all cubic-bezier(.8, 0, .74, 1.2)
+      transition: .3s cubic-bezier(.52, 0, .26, 1.2)
+      transition-property: color, padding-bottom, border-bottom
 
+/*
+ * Home page header
+ */
 .header-wrapper.home
   width: 100%
+
+  +tablet-land()
+    .logo img
+      max-width: 20rem
+
+    padding: 0 4rem
 
   .logo
     margin-right: auto
 
-  .nav-wrapper
+  .main-nav
+    // Handles the bottom border hover
     .current-url, a:hover
       border-bottom: 3px solid white
       color: white
@@ -44,31 +48,39 @@
       border-bottom: 4px solid rgba(255, 255, 255, 0)
       color: white
 
+/*
+ *  All other headers
+ */
+@media (max-width: 750px)
+  .header-wrapper.general.header-wrapper.general
+    flex-direction: column
+    height: 9rem
+    justify-content: center
+
+    .current-url, a:hover
+      padding-bottom: .1rem
+
+  .logo
+    align-self: flex-start
+
 .header-wrapper.general
   background: white
   box-shadow: 0 3px 10px rgba(0, 0, 0, .03), 0 5px 15px rgba(0, 0, 0, .04)
-  height: 47px
+  height: 4.7rem
   position: relative
 
-  .nav-wrapper
+  .main-nav
     .current-url, a:hover
       border-bottom: 3px solid purple
       color: purple
+      padding-bottom: 1rem
 
     a
       border-bottom: 4px solid rgba(255, 255, 255, 0)
       color: rgba(81, 40, 136, 50%)
       font-size: 1.3rem
-      padding-bottom: 1rem
 
   .button
     border-radius: 1.5rem
     font-size: 1.3rem
     padding: .7rem 1.5rem
-
-@media (max-width: medium-width)
-  .header-wrapper
-    .logo img
-      max-width: 20rem
-
-    padding: 0 4rem

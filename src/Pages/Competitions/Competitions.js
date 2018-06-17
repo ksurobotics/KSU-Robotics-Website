@@ -34,8 +34,13 @@ const CompetitionsPage = ({ posts }) => {
           </div>
         </div>
         <div className="content">
-          {/* Takes out the first post because it is the hero on this page */}
-          {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
+          {/* 
+          <div className="competitions-info">
+            <h2>Featured Below Are the Competitions We Have Attended</h2>
+            <p>There is 1 competition each semester</p>
+          </div>
+           */}
+          {/* Takes out the first post because it is the hero on this page. Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
           <BlogLinks pages={posts.slice(1)} defaultImage={defaultImage} category="Competitions" />
         </div>
       </div>

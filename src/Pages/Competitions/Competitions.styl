@@ -6,9 +6,8 @@
 	 *  Styles for the hero image above the fold
 	 */
 	.hero
-		margin-top: 6rem
-		// NEED TO DECREASE THIS PADDING
-		padding: 0 10rem 8rem
+		margin: 6rem 0 3rem
+		padding: 0 10rem
 		position: relative
 		width: 100%
 
@@ -21,7 +20,7 @@
 			object-fit: cover
 			width: 100%
 
-		// Moves the card to be in the middle of the image
+		// Moves the card to be in the middle of the imageq
 		// Also sets the background to a slightly transparant purple
 		.hero-card
 			align-items: center
@@ -52,82 +51,53 @@
 				padding: 1.5rem 2.7rem
 
 	/*
+	 *  Page Content styles
+	 */
+	.content
+		margin-bottom: 3rem
+
+	/*
 	 *  Styles for the Blog Post Links
 	 */
-	ul
+	ul.page-links
 		align-items: center
 		display: flex
 		flex-wrap: wrap
 		justify-content: center
 
-	// The content of the card.
-	// Transition is for the whole card.
-	// Fixed with because?
-	li.blog-links-card
-		margin: 3rem
-		easeOutCubic(.3)
-		display: block
-		// 
-		height: 0%
-		padding: 2rem
-		width: 30rem
-
-		.picture
-			margin: 0 auto
-
-		// Blog link image
-		img
-			border-radius: 9rem
-			height: 17.5rem
-			padding-bottom: 1rem
-			width: @height
-
-		// Blog link header
-		h3
-			padding-bottom: 2rem
-			padding-top: .5rem
-
-		.excerpt
-			display: block
-
+		// Adds the margin between the page links
 		a
-			height: 0
-			easeOutCubic(.3s)
+			margin: 3rem
+
+		// The content of the card.
+		// Transition is for the whole card.
+		// Fixed with because?
+		li.blog-links-card
+			easeOutCubic(.3)
 			display: block
+			padding: 2rem
+			width: 30rem
 
-		// Blog link button
-		// This handles the button's transition state when the card is not hovered
-		// The definition needs to be here because of the wrapper hover state
-		.button
-			background: rgba(0, 0, 0, 0)
-			box-shadow: none
-			color: rgba(0, 0, 0, 0)
-			font-size: 1.8rem
-			font-weight: 500
-			height: 0
-			margin-top: 0
-			padding: 0
-			position: relative
-			// allows the button to fly in from the top
-			transform: translateY(-2rem)
-			z-index: 2
+			.picture
+				margin: 0 auto
 
-		// When the card is hovered, it is roted and moved slightly
-		&:hover
-			transform: rotate(1deg) translateX(-10px) translateY(-10px)
-			easeInCubic(.2)
+			// Blog link image
+			img
+				border-radius: 9rem
+				height: 17.5rem
+				padding-bottom: 1rem
+				width: @height
 
-			a
-				height: auto
-				easeInCubic(.3)
+			// Blog link header
+			h3
+				padding-bottom: 2rem
+				padding-top: .5rem
 
-			// This handles the button's transition state when the card is hovered
-			.button
-				background: purple
-				margin-top: 1.5rem
-				elevation(3)
-				color: white
-				height: auto
-				padding: .7rem 2rem
-				transform: translateY(0)
-				transition-delay: .5s
+			.excerpt
+				color: black
+				display: block
+
+			// When the card is hovered, it is roted and moved slightly
+			&:hover
+				transform: rotate(1deg) translateX(-10px) translateY(-10px)
+				easeInCubic(.2)
