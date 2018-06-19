@@ -6,15 +6,15 @@
 	 *  Styles for the hero image above the fold
 	 */
 	.hero
-		margin: 6rem 0 3rem
-		padding: 0 10rem
+		border-radius: 5px
+		margin: 4rem auto 3rem
 		position: relative
-		width: 100%
+		width: 90%
+		easeInCubic(.4)
 
 		// An image that is 55rem high and is grayscale
 		// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
 		img
-			border-radius: .5rem
 			filter: grayscale(100%)
 			height: 55rem
 			object-fit: cover
@@ -25,24 +25,25 @@
 		.hero-card
 			align-items: center
 			background: rgba(81, 40, 136, 65%)
-			border-radius: .5rem
+			border-radius: 5px
 			color: white
 			display: flex
 			flex-direction: column
 			left: 0
 			margin: 0 auto
 			max-width: 63rem
-			padding: 2.5rem 0 3.5rem
+			padding: 2.5rem 3rem 3.5rem
 			position: absolute
 			right: 0
 			text-align: center
-			top: 12rem
+			top: 15rem
+			width: 90%
 
 			// Text shadow for better readability
 			// WHY IS THE PADDING LIKE IT IS?
 			p
 				font-size: 1.8rem
-				padding: 2rem 4rem 3rem
+				padding: 2rem 0 3rem
 				text-shadow: 4px 0 4px rgba(0, 0, 0, 50%)
 
 			.button
@@ -56,48 +57,24 @@
 	.content
 		margin-bottom: 3rem
 
-	/*
-	 *  Styles for the Blog Post Links
-	 */
-	ul.page-links
-		align-items: center
-		display: flex
-		flex-wrap: wrap
-		justify-content: center
+/*
+ *  Responsive
+ */
+.competitions
+	+tablet-land()
+		.hero .hero-card
+			padding: 1.5rem 3rem 2.5rem
 
-		// Adds the margin between the page links
-		a
-			margin: 3rem
+			p
+				padding: 1rem 0 2rem
 
-		// The content of the card.
-		// Transition is for the whole card.
-		// Fixed with because?
-		li.blog-links-card
-			easeOutCubic(.3)
-			display: block
-			padding: 2rem
-			width: 30rem
+	+tablet-port()
+		.hero
+			border-radius: 0
+			margin-top: 1.5rem
+			width: 100%
 
-			.picture
-				margin: 0 auto
-
-			// Blog link image
-			img
-				border-radius: 9rem
-				height: 17.5rem
-				padding-bottom: 1rem
-				width: @height
-
-			// Blog link header
-			h3
-				padding-bottom: 2rem
-				padding-top: .5rem
-
-			.excerpt
-				color: black
-				display: block
-
-			// When the card is hovered, it is roted and moved slightly
-			&:hover
-				transform: rotate(1deg) translateX(-10px) translateY(-10px)
-				easeInCubic(.2)
+	+mobile()
+		.contact-card
+			// need to make it move up
+			top: 8rem
