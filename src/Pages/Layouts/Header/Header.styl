@@ -12,11 +12,13 @@
     display: flex
     margin-right: 2rem
 
+    li
+      margin-left: 2rem
+
     a
       font-size: 1.8rem
       font-weight: bold
       letter-spacing: .5px
-      margin-left: 2rem
       padding-bottom: 0
       text-decoration: none
       transition: .3s cubic-bezier(.52, 0, .26, 1.2)
@@ -53,15 +55,30 @@
  */
 @media (max-width: 750px)
   .header-wrapper.general.header-wrapper.general
-    flex-direction: column
-    height: 9rem
-    justify-content: center
+    height: 8rem
+    padding: 1rem 2rem
 
     .current-url, a:hover
       padding-bottom: .1rem
 
-  .logo
-    align-self: flex-start
+    .logo, button
+      align-self: flex-start
+
+    .main-nav
+      justify-content: center
+      left: 0
+      margin-top: 1.5rem
+      position: absolute
+      width: 100%
+
+    li
+      margin-left: 1rem
+
+    li:nth-child(1)
+      margin-left: 0
+
+    button
+      padding: .5rem 1.2rem
 
 .header-wrapper.general
   background: white
