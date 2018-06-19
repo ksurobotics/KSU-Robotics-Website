@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { ImageTransformer, Helpers } from 'Utilities';
-import { Button } from 'Elements';
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
 const BlogLink = ({ page, category, defaultImage }) => {
