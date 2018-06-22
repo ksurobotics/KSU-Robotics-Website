@@ -3,8 +3,16 @@
   "description": "Built with React, Graphql with headless WordPress, Apollo, and Express",
   "version": "0.1.0",
   "private": false,
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:1234/",
+      "secure": false
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "prop-types": "^15.6.1",
@@ -18,10 +26,9 @@
   "scripts": {
     "build-css": "stylus src/assets/stylus/index.styl -o src",
     "css": "npm run build-css && stylus -w src/assets/stylus/index.styl -o src",
-    "start-js": "react-scripts start",
     "build-js": "react-scripts build",
-    "server-js": "nodemon --watch server server.js",
-    "start": "npm run start-js",
+    "serve": "nodemon server/server.js --watch",
+    "start": "react-scripts start",
     "build": "npm run build-css && npm run build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
