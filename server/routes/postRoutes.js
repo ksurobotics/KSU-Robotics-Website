@@ -6,6 +6,7 @@ module.exports = function (app) {
   app.post('/api/post-updated', (req, res) => {
     console.log(req.body);
     latestPostTime = req.body;
+    res.send('It was logged!');
   });
 
   // Whenever the client asks for it, the server tells them when the most recent post was.

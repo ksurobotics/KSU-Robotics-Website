@@ -17,8 +17,13 @@ const router = express.Router();
 // so that I can look at the body of post requests
 app.use(bodyParser.json());
 
-// Does this set my build folder to be cached in a users folder?
+// Serve any static files
 router.use(express.static(path.resolve(__dirname, '../build'), { maxAge: '30d' }));
+
+// tell the app to use the above rules
+app.use(router);
+
+require('./routes')(app);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'), err => {
@@ -28,16 +33,11 @@ app.get('/*', (req, res) => {
   });
 });
 
-// tell the app to use the above rules
-app.use(router);
-
-require('./routes')(app);
-
 // start the app
 app.listen(PORT, error => {
   if (error) {
     return console.log('something bad happened', error);
   }
 
-  console.log(`Backend listening on port ${PORT}... `);
+  console.log(`Backend listening on port ${PORT}... \n go to http://localhost:${PORT} to view the server-rendered app`);
 });
