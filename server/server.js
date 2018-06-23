@@ -20,6 +20,14 @@ app.use(bodyParser.json());
 // Does this set my build folder to be cached in a users folder?
 router.use(express.static(path.resolve(__dirname, '../build'), { maxAge: '30d' }));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'), err => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 // tell the app to use the above rules
 app.use(router);
 

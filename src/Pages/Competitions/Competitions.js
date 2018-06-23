@@ -43,8 +43,10 @@ const CompetitionsPage = ({ posts }) => {
             { name: 'keywords', content: 'KSU Robotics, KSU Robotics competitions' },
           ]}
         />
-        <button onClick={updatePost}>Update!</button>
-        <button onClick={getLatestDate}>Get the date!</button>
+        <div className="tempButtons">
+          <button onClick={updatePost}>Update!</button>
+          <button onClick={getLatestDate}>Get the date!</button>
+        </div>
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransformer media={latestPost.featuredImage} defaultImage={defaultImage} />
