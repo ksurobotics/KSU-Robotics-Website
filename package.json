@@ -13,14 +13,14 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
-    "dotenv": "^5.0.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -34,7 +34,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb": "^16",
     "eslint-plugin-graphql": "^2.1.1",
     "stylus": "^0.54.5"
   }
