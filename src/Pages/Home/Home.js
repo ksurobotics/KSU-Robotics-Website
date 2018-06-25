@@ -12,7 +12,7 @@ const IndexPage = () => (
       ]}
     />
     <div className="hero">
-      <div className="content-wrapper">
+      <div className="hero-container">
         <div className="title">
           <h1>Kansas State Robotics</h1>
           <h2>Where Trial and Error is the Only Answer</h2>
@@ -20,7 +20,7 @@ const IndexPage = () => (
         <ContactCard />
       </div>
     </div>
-    <div className="page-wrapper">
+    <div className="content">
       <h2>This is a great statement</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,

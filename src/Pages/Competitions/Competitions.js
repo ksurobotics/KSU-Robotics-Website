@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 import { BlogLinks, Button } from 'Elements';
 import { ImageTransformer, Helpers } from 'Utilities';
