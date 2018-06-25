@@ -6,8 +6,6 @@ import AboutUs from './AboutUs/AboutUs';
 import Competitions from './Competitions/Competitions';
 import Robots from './Robots/Robots';
 
-import RobotTemplate from './Templates/RobotTemplate';
-import CompetitionTemplate from './Templates/CompetitionTemplate';
-import PersonTemplate from './Templates/PersonTemplate';
+import PostTemplate from './Templates/PostTemplate';
 
-export { Header, Footer, Home, AboutUs, Competitions, Robots, RobotTemplate, CompetitionTemplate, PersonTemplate };
+export { Header, Footer, Home, AboutUs, Competitions, Robots, PostTemplate };
