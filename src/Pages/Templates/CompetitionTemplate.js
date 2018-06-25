@@ -6,10 +6,10 @@ import { ImageTransformer } from 'Utilities';
 import defaultImage from 'assets/images/default-competition-image.jpeg';
 
 const CompetitionTemplate = ({ post = {} }) => (
-  <div className="page-wrapper">
-    <h2>{post.title || 'Loading...'}</h2>
-    <ImageTransformer media={post.featuredImage} defaultImage={defaultImage} />
-    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+  <div className="page-wrapper post">
+    <h1 className="title">{post.title || 'Loading...'}</h1>
+    <ImageTransformer media={post.featuredImage} defaultImage={defaultImage} className="featured" />
+    <div className="content" dangerouslySetInnerHTML={{ __html: post.content }} />
   </div>
 );
 

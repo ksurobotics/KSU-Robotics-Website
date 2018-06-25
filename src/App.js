@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { withRouter, Route } from 'react-router';
-import axios from 'axios';
 import { some, filter } from 'lodash';
 
-import { PropsRoute } from 'Utilities';
+import { PropsRoute, importPosts } from 'Utilities';
 import {
   Header,
   Footer,
@@ -24,60 +23,7 @@ class App extends Component {
   };
 
   componentWillMount() {
-    // Check whether the browser has local storage
-    if (typeof Storage !== 'undefined') {
-      // if the session storage already contains our posts then the state is set from local storage
-      if (window.sessionStorage.postNodes) {
-        this.setState({ postNodes: JSON.parse(window.sessionStorage.getItem('postNodes')) });
-        // We don't have the posts in session storage, so we are going to get it from the api, but also set local storage to have our posts now.
-      } else this.fetchCompetitionPosts({ hasSessionStorage: true });
-      // The browser doesn't have local storage so we are fetching from the api
-    } else this.fetchCompetitionPosts();
-  }
-  // Gets all of the information we need from the api
-  GET_POSTS = `
-  {
-    posts(where: {orderby: {field: DATE order: DESC}} ){
-      nodes {
-        date
-        title
-        excerpt
-        slug
-        content
-        categories {
-          nodes {
-            name
-          }
-        }
-        featuredImage {
-          sourceUrl
-          id
-          title
-          altText
-        }
-      }
-    }
-  }
-  `;
-
-  // Fetches data from the api
-  fetchCompetitionPosts({ hasSessionStorage }) {
-    axios
-      .post('http://ksurobotics.esy.es/graphql', {
-        query: `${this.GET_POSTS}`,
-        variables: '',
-      })
-      .then(res => {
-        // makes our data easier to access
-        const postNodes = res.data.data.posts.nodes;
-        // sets the state
-        this.setState({ postNodes });
-        // If the browser supports session storage set our posts data as postNodes
-        if (hasSessionStorage) window.sessionStorage.setItem('postNodes', JSON.stringify(postNodes));
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    importPosts({ app: this });
   }
 
   render() {

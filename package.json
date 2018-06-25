@@ -27,7 +27,7 @@
     "build-css": "stylus src/assets/stylus/index.styl -o src",
     "css": "npm run build-css && stylus -w src/assets/stylus/index.styl -o src",
     "build-js": "react-scripts build",
-    "serve": "nodemon server/server.js --watch",
+    "s": "nodemon server/server.js --watch",
     "start": "react-scripts start",
     "build": "npm run build-css && npm run build-js",
     "test": "react-scripts test --env=jsdom",

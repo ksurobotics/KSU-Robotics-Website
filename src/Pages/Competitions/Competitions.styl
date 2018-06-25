@@ -1,64 +1,60 @@
 /*
  *  Styles for the competition Page
  */
-.competitions
-	.tempButtons
-		display: none
+/*
+ *  Styles for the hero image above the fold
+ */
+.hero
+	border-radius: 5px
+	margin: 4rem auto 3rem
+	position: relative
+	width: 90%
+	easeInCubic(.4)
 
-	/*
-	 *  Styles for the hero image above the fold
-	 */
-	.hero
+	// An image that is 55rem high and is grayscale
+	// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
+	img
+		filter: grayscale(100%)
+		height: 55rem
+		object-fit: cover
+		width: 100%
+
+	// Moves the card to be in the middle of the imageq
+	// Also sets the background to a slightly transparant purple
+	.hero-card
+		align-items: center
+		background: rgba(81, 40, 136, 65%)
 		border-radius: 5px
-		margin: 4rem auto 3rem
-		position: relative
+		color: white
+		display: flex
+		flex-direction: column
+		left: 0
+		margin: 0 auto
+		max-width: 63rem
+		padding: 2.5rem 3rem 3.5rem
+		position: absolute
+		right: 0
+		text-align: center
+		top: 15rem
 		width: 90%
-		easeInCubic(.4)
 
-		// An image that is 55rem high and is grayscale
-		// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
-		img
-			filter: grayscale(100%)
-			height: 55rem
-			object-fit: cover
-			width: 100%
+		// Text shadow for better readability
+		// WHY IS THE PADDING LIKE IT IS?
+		p
+			font-size: 1.8rem
+			padding: 2rem 0 3rem
+			text-shadow: 4px 0 4px rgba(0, 0, 0, 50%)
 
-		// Moves the card to be in the middle of the imageq
-		// Also sets the background to a slightly transparant purple
-		.hero-card
-			align-items: center
-			background: rgba(81, 40, 136, 65%)
-			border-radius: 5px
-			color: white
-			display: flex
-			flex-direction: column
-			left: 0
-			margin: 0 auto
-			max-width: 63rem
-			padding: 2.5rem 3rem 3.5rem
-			position: absolute
-			right: 0
-			text-align: center
-			top: 15rem
-			width: 90%
+		.button
+			background: none
+			border: solid 2px white
+			padding: 1.5rem 2.7rem
 
-			// Text shadow for better readability
-			// WHY IS THE PADDING LIKE IT IS?
-			p
-				font-size: 1.8rem
-				padding: 2rem 0 3rem
-				text-shadow: 4px 0 4px rgba(0, 0, 0, 50%)
-
-			.button
-				background: none
-				border: solid 2px white
-				padding: 1.5rem 2.7rem
-
-	/*
-	 *  Page Content styles
-	 */
-	.content
-		margin-bottom: 3rem
+/*
+ *  Page Content styles
+ */
+.content
+	margin-bottom: 3rem
 
 /*
  *  Responsive

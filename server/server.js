@@ -36,7 +36,7 @@ app.get('/*', (req, res) => {
 // start the app
 app.listen(PORT, error => {
   if (error) {
-    return console.log('something bad happened', error);
+    return console.error('something bad happened', error);
   }
 
   console.log(`Backend listening on port ${PORT}... \n go to http://localhost:${PORT} to view the server-rendered app`);

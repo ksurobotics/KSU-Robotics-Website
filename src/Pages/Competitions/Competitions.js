@@ -10,27 +10,6 @@ import defaultImage from 'assets/images/default-competition-image.jpeg';
 
 // eslint-disable-next-line
 const CompetitionsPage = ({ posts }) => {
-  function updatePost() {
-    axios
-      .post('api/post-updated', { date: Date.now() })
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-  function getLatestDate() {
-    axios
-      .get('api/latest-post')
-      .then(res => {
-        console.log('The time is: ', res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  }
-
   const latestPost = posts[0];
   if (latestPost) {
     return (
@@ -43,10 +22,6 @@ const CompetitionsPage = ({ posts }) => {
             { name: 'keywords', content: 'KSU Robotics, KSU Robotics competitions' },
           ]}
         />
-        <div className="tempButtons">
-          <button onClick={updatePost}>Update!</button>
-          <button onClick={getLatestDate}>Get the date!</button>
-        </div>
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransformer media={latestPost.featuredImage} defaultImage={defaultImage} />

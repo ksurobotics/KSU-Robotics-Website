@@ -1,5 +1,5 @@
 const postRoutes = require('./postRoutes');
 
-module.exports = function (app) {
+module.exports = app => {
   postRoutes(app);
 };
