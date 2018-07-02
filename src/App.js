@@ -19,7 +19,7 @@ class App extends Component {
   /**
    * Gets the post corresponding to the route's category
    */
-  getPost() {
+  getSpecificPost() {
     return this.state.postNodes.find(post => {
       let category = '';
       const { pathname } = this.props.location;
@@ -28,6 +28,10 @@ class App extends Component {
       else if (includes(pathname, '/Robots/')) category = '/Robots/';
       return post.slug === pathname.split(category).pop();
     });
+  }
+
+  getCategoryPosts(category) {
+    return filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === category));
   }
 
   render() {
@@ -39,25 +43,10 @@ class App extends Component {
         <Header location={this.props.location.pathname} />
         <Route exact path="/" component={Home} />
         {/* This component allows me to pass props to a component while still routing correctly */}
-        <PropsRoute
-          exact
-          path="/Competitions"
-          component={Competitions}
-          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'Competitions'))}
-        />
-        <PropsRoute
-          exact
-          path="/About-Us"
-          component={AboutUs}
-          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'People'))}
-        />
-        <PropsRoute
-          exact
-          path="/Robots"
-          component={Robots}
-          posts={filter(this.state.postNodes, node => some(node.categories.nodes, cat => cat.name === 'Robots'))}
-        />
-        <PropsRoute path="/(Competitions|People|Robots)/:uri" component={PostTemplate} post={this.getPost()} />
+        <PropsRoute exact path="/Competitions" component={Competitions} posts={this.getCategoryPosts('Competitions')} />
+        <PropsRoute exact path="/About-Us" component={AboutUs} posts={this.getCategoryPosts('People')} />
+        <PropsRoute exact path="/Robots" component={Robots} posts={this.getCategoryPosts('Robots')} />
+        <PropsRoute path="/(Competitions|People|Robots)/:uri" component={PostTemplate} post={this.getSpecificPost()} />
         <Footer />
       </div>
     );
