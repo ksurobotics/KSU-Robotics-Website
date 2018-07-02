@@ -24,13 +24,15 @@ const CompetitionsPage = ({ posts }) => {
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
           <ImageTransformer media={latestPost.featuredImage} defaultImage={defaultImage} />
-          <div className="card hero-card">
-            <h2 className="title">{Helpers.decodeHtml(latestPost.title)}</h2>
-            <p className="excerpt">
-              {// removes html tags
-              Helpers.decodeHtml(latestPost.excerpt)}
-            </p>
-            <Button className="primary">View Competition</Button>
+          <div className="hero-card-wrapper">
+            <div className="card hero-card">
+              <h2 className="title">{Helpers.decodeHtml(latestPost.title)}</h2>
+              <p className="excerpt">
+                {// removes html tags
+                Helpers.decodeHtml(latestPost.excerpt)}
+              </p>
+              <Button className="primary">View Competition</Button>
+            </div>
           </div>
         </div>
         <div className="content">

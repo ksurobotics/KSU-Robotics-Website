@@ -3,7 +3,9 @@
  */
 .competitions
 	.hero // Hero image above the fold
+		align-items: center
 		border-radius: 5px
+		display: grid
 		margin: 4rem auto 3rem
 		position: relative
 		width: 90%
@@ -13,12 +15,18 @@
 		// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
 		img
 			filter: grayscale(100%)
+			grid-column: 1 / -1
+			grid-row: 1 / -1
 			height: 55rem
 			object-fit: cover
 			width: 100%
 
 	// Moves the card to be in the middle of the imageq
 	// Also sets the background to a slightly transparant purple
+	.hero-card-wrapper
+		grid-column: 1 / -1
+		grid-row: 1 / -1
+
 	.hero-card
 		align-items: center
 		background: rgba(81, 40, 136, 65%)
@@ -26,15 +34,13 @@
 		color: white
 		display: flex
 		flex-direction: column
-		left: 0
+		height: auto
 		margin: 0 auto
 		max-width: 63rem
 		padding: 2.5rem 3rem 3.5rem
-		position: absolute
-		right: 0
+		position: relative
 		text-align: center
-		top: 15rem
-		width: 90%
+		z-index: 2
 
 		// Text shadow for better readability
 		// WHY IS THE PADDING LIKE IT IS?
@@ -71,11 +77,13 @@
 			margin-top: 0
 			width: 100%
 
+		.hero-card
+			bottom: 4rem
+
 	+mobile()
 		.hero .hero-card
 			padding: 1.5rem 1rem 2.5rem
 			width: 100%
 
-		.contact-card
-			// need to make it move up
-			top: 8rem
+		.hero-card
+			bottom: 8rem
