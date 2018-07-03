@@ -33,6 +33,8 @@ module.exports = app => {
         console.error(err);
       });
   }
+  // Calls it once
+  fetchLastModified();
   // Gets the last modified date every 3 hours
   setInterval(fetchLastModified, 1000 * 60 * 60 * 3);
 
