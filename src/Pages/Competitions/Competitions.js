@@ -3,13 +3,15 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import { BlogLinks, Button } from 'Elements';
-import { ImageTransformer, Helpers } from 'Utilities';
+import { Helpers, Cloudinary } from 'Utilities';
 
-import defaultImage from 'assets/images/default-competition-image.jpeg';
+// import defaultImage from 'assets/images/default-competition-image.jpeg';
 
 // eslint-disable-next-line
 const CompetitionsPage = ({ posts }) => {
   const latestPost = posts[0];
+  const competitionsHero = { maxWidth: 1, height: 550 };
+  const defaultImage = 'http://ksurobotics.esy.es/wp-content/uploads/2018/08/Default-Competition.jpg';
   if (latestPost) {
     return (
       <div className="competitions">
@@ -23,7 +25,12 @@ const CompetitionsPage = ({ posts }) => {
         />
         <div className="hero">
           {/* Passes the latestPost media, default image, and the fact that it is a fluid image to the ImageTransform component */}
-          <ImageTransformer media={latestPost.featuredImage} defaultImage={defaultImage} />
+          <Cloudinary
+            modifiers={competitionsHero}
+            fluid
+            source={latestPost.featuredImage.sourceUrl || defaultImage}
+            alt={latestPost.featuredImage.altText}
+          />
           <div className="hero-card-wrapper">
             <div className="card hero-card">
               <h2 className="title">{Helpers.decodeHtml(latestPost.title)}</h2>
@@ -49,7 +56,7 @@ const CompetitionsPage = ({ posts }) => {
     );
   }
   // if we don't have the posts yet display a loading icon
-  return <p>>Loading</p>;
+  return <p />;
 };
 CompetitionsPage.propTypes = {
   posts: PropTypes.array.isRequired,

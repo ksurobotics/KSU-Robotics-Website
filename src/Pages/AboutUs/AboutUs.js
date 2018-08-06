@@ -3,10 +3,10 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import { BlogLinks } from 'Elements/';
-import defaultImage from 'assets/images/default-person-image.jpeg';
 
 // eslint-disable-next-line
 const AboutUsPage = ({ posts }) => {
+  const defaultImage = 'http://ksurobotics.esy.es/wp-content/uploads/2018/08/Default-Person.jpg';
   if (posts) {
     return (
       <div className="people">
@@ -26,7 +26,7 @@ const AboutUsPage = ({ posts }) => {
     );
   }
   // if we don't have the posts yet display a loading icon
-  return <p>>Loading</p>;
+  return <p />;
 };
 AboutUsPage.propTypes = {
   posts: PropTypes.array.isRequired,

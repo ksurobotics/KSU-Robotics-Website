@@ -2,18 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { ImageTransformer, Helpers } from 'Utilities';
+import { Helpers, Cloudinary } from 'Utilities';
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
 const BlogLink = ({ page, category, defaultImage }) => {
   const { title, slug, featuredImage, excerpt } = page;
+  const modifiers = { width: 175, height: 175, borderRadius: 90 };
   return (
     <Link to={`/${category}/${slug}`}>
       <li className="card blog-links-card">
         <div className="picture">
           {/* replaces non-breaking spaces */}
           <h3>{Helpers.decodeHtml(title)}</h3>
-          <ImageTransformer media={featuredImage} defaultImage={defaultImage} />
+          <Cloudinary
+            modifiers={modifiers}
+            fixed
+            source={featuredImage ? featuredImage.sourceUrl : defaultImage}
+            alt={featuredImage ? featuredImage.altText : 'Default Image'}
+          />
         </div>
         {/* strips the excerpt of html tags and trims length to 200 characters */}
         <p className="excerpt">{Helpers.decodeHtml(excerpt)}</p>
