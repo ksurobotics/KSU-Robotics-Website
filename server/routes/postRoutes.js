@@ -35,8 +35,8 @@ module.exports = app => {
   }
   // Calls it once
   fetchLastModified();
-  // Gets the last modified date every 3 hours
-  setInterval(fetchLastModified, 1000 * 60 * 60 * 3);
+  // Gets the last modified date every 5 seconds
+  setInterval(fetchLastModified, 1000 * 5);
 
   app.post('/api/post-updated', (req, res) => {
     fetchLastModified();
