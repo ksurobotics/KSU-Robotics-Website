@@ -1,8 +1,9 @@
-.card
+.card {
 	elevation(4)
 	border-radius: .5rem
+}
 
-.button
+.button {
 	border: none
 	border-radius: 6px
 	elevation(3)
@@ -15,65 +16,87 @@
 	background: linear-gradient(270deg, #553594 0, #612694 100%)
 	color: white
 
-	&:hover
+	&:hover {
 		box-shadow: 0 8px 15px 0 rgba(0, 0, 0, .1), 0 4px 7px 0 rgba(0, 0, 0, .07)
 		transform: translateY(-1px)
 		easeInQuart(.15)
+	}
+}
 
-.button.secondary
+.button.secondary {
 	background: white
 	color: purple
 
-	&:hover
+	&:hover {
 		background: #e6e6e6
+	}
+}
 
 /*
  *  Styles for the Blog Post Links
  */
-ul.blog-links
+ul.blog-links {
 	align-items: center
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
 
 	// Adds the margin between the page links
-	a
+	a {
 		margin: 3rem
+	}
 
 	// The content of the card.
 	// Transition is for the whole card.
 	// Fixed with because?
-	li.blog-links-card
+	li.blog-links-card {
 		easeOutCubic(.3)
 		display: block
 		padding: 2rem
 		text-align: center
 		width: 30rem
 
-		.picture
-			margin: 0 auto
-			width: 25rem
-
 		// Blog link image
-		img
+		img {
 			border-radius: 9rem
 			height: 17.5rem
 			object-fit: cover
 			padding-bottom: 1rem
 			width: @height
+		}
 
 		// Blog link header
-		h3
+		h3 {
 			color: purple
 			font-size: 2rem
 			padding-bottom: 2rem
 			padding-top: .5rem
+		}
 
-		.excerpt
+		.excerpt {
 			color: darkGray
 			display: block
+		}
 
 		// When the card is hovered, it is roted and moved slightly
-		&:hover
+		&:hover {
 			transform: rotate(1deg) translateX(-10px) translateY(-10px)
 			easeInCubic(.2)
+		}
+	}
+
+	+tablet-port() {
+		a {
+			margin: 2rem
+		}
+
+		li.blog-links-card {
+			width: 25rem
+
+			img {
+				height: 15rem
+				width: @height
+			}
+		}
+	}
+}

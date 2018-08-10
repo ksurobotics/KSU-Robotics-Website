@@ -1,23 +1,24 @@
 /*
  *  All Headers get these styles
  */
-.header-wrapper
+.header-wrapper {
   align-items: center
   display: flex
   justify-content: space-between
   padding: 0 6.2rem
   position: absolute
 
-  ul.main-nav
+  ul.main-nav {
     align-items: center
     display: flex
 
-    li
+    li {
       margin-left: 2rem
       easeInQuart(.3)
       transition-property: margin-left
+    }
 
-    a
+    a {
       font-size: 1.8rem
       font-weight: bold
       letter-spacing: .5px
@@ -25,63 +26,84 @@
       text-decoration: none
       transition: .3s cubic-bezier(.52, 0, .26, 1.2)
       transition-property: color, padding-bottom, border-bottom
+    }
+  }
+}
 
 /*
  * Home page header
  */
-.header-wrapper.home
+.header-wrapper.home {
   height: 9rem
   width: 100%
 
-  .logo
+  .logo {
     margin-right: auto
+  }
 
-  .main-nav
+  .main-nav {
     // Handles the bottom border hover
-    .current-url, a:hover
+    .current-url, a:hover {
       border-bottom: 3px solid white
       color: white
       padding-bottom: .3rem
+    }
 
-    a
+    a {
       border-bottom: 4px solid rgba(255, 255, 255, 0)
       color: rgba(255, 255, 255, .5)
+    }
+  }
+}
 
 /*
  *  Home Header Responsive
  */
-+tablet-land()
-  .header-wrapper.home
++tablet-land() {
+  .header-wrapper.home {
     padding: 0 4rem
 
-    .logo img
+    .logo img {
       max-width: 20rem
+    }
+  }
+}
 
-+tablet-port()
-  .header-wrapper.home
++tablet-port() {
+  .header-wrapper.home {
     flex-direction: column
     padding: 1rem 0
 
-    .logo
+    .logo {
       margin-right: 0
+    }
 
-    ul.main-nav
-      li:nth-child(1)
+    ul.main-nav {
+      li:nth-child(1) {
         margin-left: 0
+      }
 
-      a
+      a {
         font-size: 1.4rem
+      }
+    }
+  }
+}
 
-+mobile()
-  .header-wrapper.home
-    .main-nav
-      li
++mobile() {
+  .header-wrapper.home {
+    .main-nav {
+      li {
         margin-left: .8rem
+      }
+    }
+  }
+}
 
 /*
  *  All other headers
  */
-.header-wrapper.general
+.header-wrapper.general {
   background: white
   border-top: 6px solid #512888
   box-shadow: 0 3px 10px rgba(0, 0, 0, .03), 0 5px 15px rgba(0, 0, 0, .04)
@@ -89,70 +111,81 @@
   height: 5.3rem
   position: relative
 
-  .main-nav
-    .current-url, a:hover
+  .main-nav {
+    .current-url, a:hover {
       border-bottom: 3px solid purple
       color: purple
       padding-bottom: 1rem
+    }
 
-    a
+    a {
       border-bottom: 4px solid rgba(255, 255, 255, 0)
       color: rgba(81, 40, 136, 60%)
       font-size: 1.4rem
+    }
+  }
 
-  .button
+  .button {
     border-radius: 1.5rem
     font-size: 1.3rem
-    margin-top: -.3rem
     padding: .7rem 1.5rem
+  }
+}
 
 /*
  *  General Header Responsive
  */
-+tablet-port()
-  .header-wrapper.general
-    height: 9rem
++tablet-port() {
+  .header-wrapper.general {
+    height: 9.4rem
     padding: 1rem 0
 
-    .logo
+    .logo {
       align-self: flex-start
       margin-left: 2rem
+    }
 
-    button
+    button {
       align-self: flex-start
       margin-right: 3rem
+    }
 
-    @media (max-width: 400px)
-      .header-wrapper.general button
+    @media (max-width: 400px) {
+      .header-wrapper.general button {
         margin-right: 2rem
+      }
+    }
 
-    .main-nav
-      border-top: 1px solid rgba(81, 40, 136, 60%)
+    .main-nav {
+      background: #51288852
       justify-content: center
       margin-top: 1rem
       order: 3
-      padding-top: 1rem
+      padding: 1rem 0
       width: 100%
 
-      li:nth-child(1)
+      a {
+        color: white
+      }
+
+      li:nth-child(1) {
         margin-left: 0
+      }
 
-      .current-url, a:hover
-        padding-bottom: .8rem
+      a.current-url, a:hover, a {
+        border-bottom: 4px solid rgba(255, 255, 255, 0)
+      }
+    }
 
-    button
+    button {
       order: 2
       padding: .5rem 1.2rem
+    }
+  }
+}
 
-+mobile()
-  .header-wrapper.general .main-nav li
++mobile() {
+  .header-wrapper.general .main-nav li {
     margin-left: .8rem
-
-  /*
-   *  Gets rid of the bottom border when on the competitions page and when under tablet portrait width
-   */
-
-+tablet-port()
-  .header-wrapper.general .active-competitions
-    a.current-url, a:hover, a
-      border-bottom: 4px solid rgba(255, 255, 255, 0)
+  }
+}

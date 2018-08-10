@@ -1,8 +1,8 @@
 /*
  *  Styles for the competition Page
  */
-.competitions
-	.hero // Hero image above the fold
+.competitions {
+	.hero { // Hero image above the fold
 		align-items: center
 		border-radius: 5px
 		display: grid
@@ -13,21 +13,24 @@
 
 		// An image that is 55rem high and is grayscale
 		// TODO: CHANGE THE WIDTH 100% TO SOMETHING DIFFERENT
-		img
+		img {
 			filter: grayscale(100%)
 			grid-column: 1 / -1
 			grid-row: 1 / -1
 			height: 55rem
 			object-fit: cover
 			width: 100%
+		}
+	}
 
 	// Moves the card to be in the middle of the imageq
 	// Also sets the background to a slightly transparant purple
-	.hero-card-wrapper
+	.hero-card-wrapper {
 		grid-column: 1 / -1
 		grid-row: 1 / -1
+	}
 
-	.hero-card
+	.hero-card {
 		align-items: center
 		background: rgba(81, 40, 136, 65%)
 		border-radius: 5px
@@ -44,46 +47,61 @@
 
 		// Text shadow for better readability
 		// WHY IS THE PADDING LIKE IT IS?
-		p
+		p {
 			font-size: 1.8rem
 			padding: 2rem 0 3rem
 			text-shadow: 4px 0 4px rgba(0, 0, 0, 50%)
+		}
 
-		.button
+		.button {
 			background: none
 			border: solid 2px white
 			padding: 1.5rem 2.7rem
+		}
+	}
+}
 
 /*
  *  Page Content styles
  */
-.content
+.content {
 	margin-bottom: 3rem
+}
 
 /*
  *  Responsive
  */
-.competitions
-	+tablet-land()
-		.hero .hero-card
+.competitions {
+	+tablet-land() {
+		.hero .hero-card {
 			padding: 1.5rem 3rem 2.5rem
 
-			p
+			p {
 				padding: 1rem 0 2rem
+			}
+		}
+	}
 
-	+tablet-port()
-		.hero
+	+tablet-port() {
+		.hero {
 			border-radius: 0
 			margin-top: 0
 			width: 100%
+		}
 
-		.hero-card
+		.hero-card {
 			bottom: 4rem
+		}
+	}
 
-	+mobile()
-		.hero .hero-card
+	+mobile() {
+		.hero .hero-card {
 			padding: 1.5rem 1rem 2.5rem
 			width: 100%
+		}
 
-		.hero-card
+		.hero-card {
 			bottom: 8rem
+		}
+	}
+}
