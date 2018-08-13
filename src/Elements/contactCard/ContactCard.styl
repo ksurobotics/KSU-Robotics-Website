@@ -1,0 +1,81 @@
+.contact-card {
+	background: white
+	padding: 3rem 3.9rem
+	width: 37rem
+	easeInQuart(.3)
+	transition-property: width, height, padding
+
+	.heading {
+		color: black
+		font-size: 1.7rem
+		padding-bottom: 2rem
+		text-align: center
+		easeInQuart(.3)
+		transition-property: padding
+	}
+
+	.info {
+		font-size: 1.6rem
+		padding-bottom: 2rem
+	}
+
+	.form {
+		align-items: center
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+		.button {
+			margin-top: 1rem
+			padding: 1.1rem
+		}
+	}
+
+	form > * {
+		width: 29rem
+		easeInQuart(.3)
+		transition-property: width, padding
+	}
+
+	+tablet-port() {
+		padding: 2rem 3rem
+		width: 27rem
+
+		.heading {
+			margin-right: -1rem
+			padding-bottom: 2rem
+			text-align: left
+		}
+
+		.info {
+			padding-bottom: 1rem
+		}
+
+		form > * {
+			width: 20rem
+		}
+
+		form .button {
+			margin-top: 0
+		}
+	}
+
+	@media (max-width: 600px) {
+		margin-top: 4rem
+	}
+}
+
+.contact-form {
+	.name-input, .email-input, .message-input {
+		background: #EDF0F2
+		border: none
+		border-radius: 6px
+		font-size: 1.4rem
+		margin-bottom: 2rem
+		padding: 1rem 1.5rem
+
+		&::placeholder {
+			color: #64717A
+		}
+	}
+}

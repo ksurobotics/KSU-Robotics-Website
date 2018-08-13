@@ -38,7 +38,9 @@ const CompetitionsPage = ({ posts }) => {
                 {// removes html tags
                 Helpers.decodeHtml(latestPost.excerpt)}
               </p>
-              <Button className="primary">View Competition</Button>
+              <a href={`/Competitions/${latestPost.slug}`}>
+                <Button className="primary">View Competition</Button>
+              </a>
             </div>
           </div>
         </div>

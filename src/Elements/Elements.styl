@@ -13,7 +13,7 @@
 	padding: .7rem 1.4rem
 	position: relative
 	easeOutQuart(.15)
-	background: linear-gradient(270deg, #553594 0, #612694 100%)
+	purple-grad()
 	color: white
 
 	&:hover {
@@ -98,5 +98,85 @@ ul.blog-links {
 				width: @height
 			}
 		}
+	}
+}
+
+.email-modal {
+	purple-grad()
+	height: 100%
+	left: 0
+	position: fixed
+	top: 0
+	width: 100%
+
+	.modal-title {
+		color: white
+		padding-top: 3rem
+		text-align: center
+	}
+
+	.header {
+		align-items: center
+		background: darkGray
+		display: flex
+		justify-content: space-between
+		padding: 1rem 2rem
+		width: 100%
+
+		.heading {
+			color: white
+		}
+	}
+
+	.close {
+		background: none
+		border: none
+		color: white
+		font-size: 1.6rem
+		font-weight: 900
+
+		&:hover {
+			cursor: pointer
+		}
+	}
+
+	.email-card {
+		background: white
+		left: 0
+		margin: 2rem auto
+		position: absolute
+		right: 0
+		width: 70rem
+	}
+
+	.email-form {
+		padding: 2rem
+	}
+
+	.name, .email {
+		display: inline-block
+	}
+
+	.label {
+		font-weight: 600
+		margin-right: 1.2rem
+	}
+
+	.name {
+		margin-right: 2rem
+	}
+
+	.message-input {
+		display: block
+		font-family: 'Open Sans'
+		height: 60%
+		height: 10rem
+		margin-top: .5rem
+		width: 100%
+	}
+
+	.submit {
+		float: right
+		margin-bottom: 2rem
 	}
 }

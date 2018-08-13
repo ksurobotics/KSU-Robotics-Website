@@ -1,6 +1,38 @@
 .post {
-	margin: 0 auto
-	max-width: 90rem
+	.back {
+		align-items: center
+		background: none
+		border: none
+		border-radius: 5px
+		display: flex
+		margin-left: 3rem
+		margin-top: 2rem
+		transition: transform .2s ease-in
+
+		svg {
+			height: 3.2rem
+			width: @height
+		}
+
+		.text {
+			color: purple
+			font-size: 1.8rem
+			font-weight: 600
+			margin-left: 1rem
+		}
+
+		&:hover {
+			cursor: pointer
+			transform: translateY(-2px)
+		}
+	}
+}
+
+.post {
+	.page-wrapper {
+		margin: 0 auto
+		max-width: 90rem
+	}
 
 	img.featured {
 		border-radius: 5px
@@ -15,8 +47,7 @@
 	h1.title {
 		color: purple
 		font-size: 2.4rem
-		margin-bottom: 3rem
-		margin-top: 3rem
+		padding-bottom: 3rem
 		text-align: center
 	}
 

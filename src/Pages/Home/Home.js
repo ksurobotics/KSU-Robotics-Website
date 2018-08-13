@@ -15,7 +15,7 @@ const IndexPage = () => (
       <div className="hero-container">
         <div className="title">
           <h1>Kansas State Robotics</h1>
-          <h2>Where Trial and Error is the Only Answer</h2>
+          <h2 className="snippet">Where Trial and Error is the Only Answer</h2>
         </div>
         <ContactCard />
       </div>

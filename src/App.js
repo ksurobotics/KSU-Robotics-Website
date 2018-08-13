@@ -24,7 +24,7 @@ class App extends Component {
       let category = '';
       const { pathname } = this.props.location;
       if (includes(pathname, '/Competitions/')) category = '/Competitions/';
-      else if (includes(pathname, '/People/')) category = '/People/';
+      else if (includes(pathname, '/About-Us/')) category = '/About-Us/';
       else if (includes(pathname, '/Robots/')) category = '/Robots/';
       return post.slug === pathname.split(category).pop();
     });
@@ -46,7 +46,12 @@ class App extends Component {
         <PropsRoute exact path="/Competitions" component={Competitions} posts={this.getCategoryPosts('Competitions')} />
         <PropsRoute exact path="/About-Us" component={AboutUs} posts={this.getCategoryPosts('People')} />
         <PropsRoute exact path="/Robots" component={Robots} posts={this.getCategoryPosts('Robots')} />
-        <PropsRoute path="/(Competitions|People|Robots)/:uri" component={PostTemplate} post={this.getSpecificPost()} />
+        <PropsRoute
+          path="/(Competitions|About-Us|Robots)/:uri"
+          component={PostTemplate}
+          post={this.getSpecificPost()}
+          history={this.props.history}
+        />
         <Footer />
       </div>
     );
@@ -56,5 +61,6 @@ class App extends Component {
 export default withRouter(App);
 
 App.propTypes = {
+  history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };

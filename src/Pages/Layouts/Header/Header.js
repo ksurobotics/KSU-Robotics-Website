@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Button } from 'Elements';
-import logo from 'assets/images/Logo.png';
-import purpleLogo from 'assets/images/Purple-Logo.png';
+import { Button, EmailModal } from 'Elements';
+import { Icon, Toggle } from 'Utilities';
+
+const Logo = ({ location }) => {
+  let color = '#512888';
+  if (location === '/') color = '#FFFFFF';
+  return (
+    <NavLink className="logo" to="/">
+      <span className={`text ${color}`}>KSU Robotics</span>
+      <Icon name="wildcat" color={color} />
+    </NavLink>
+  );
+};
+Logo.propTypes = {
+  location: PropTypes.string.isRequired,
+};
 
 // The Header has urls that have an active state and an inactive state.
 // The Contact us button does not display on the home page because there
 // Is already a contact us button on the home page
 const Header = ({ location }) => (
   <div className={`header-wrapper ${location === '/' ? 'home' : 'general'}`}>
-    <NavLink className="logo" to="/">
-      <img src={location === '/' ? logo : purpleLogo} alt="KSU Robotics Logo" />
-    </NavLink>
+    <Logo location={location} />
     <ul className={`main-nav ${location.toLowerCase() === '/competitions' ? 'active-competitions' : ''}`}>
       <li>
         <NavLink exact activeClassName="current-url" to="/">
@@ -36,10 +47,18 @@ const Header = ({ location }) => (
         </NavLink>
       </li>
     </ul>
-    <Button className={`primary ${location === '/' ? 'hidden' : ''}`}>Contact Us!</Button>
+    <Toggle>
+      {({ on, toggle }) => (
+        <Fragment>
+          <Button onClick={toggle} className={`primary ${location === '/' ? 'hidden' : ''}`}>
+            Contact Us!
+          </Button>
+          <EmailModal render={on} toggle={toggle} />
+        </Fragment>
+      )}
+    </Toggle>
   </div>
 );
-
 Header.propTypes = {
   location: PropTypes.string.isRequired,
 };

@@ -4,6 +4,7 @@ import ImageTransformer from './ImageTransformer';
 import PropsRoute from './PropsRoute';
 import importPosts from './importPosts';
 import Cloudinary from './Cloudinary';
+import Toggle from './Toggle';
+import Icon from './Icon';
 
-// export { Cloudinary, Helpers, ImageTransformer, PropsRoute };
-export { Helpers, ImageTransformer, PropsRoute, importPosts, Cloudinary };
+export { Helpers, ImageTransformer, PropsRoute, importPosts, Cloudinary, Toggle, Icon };

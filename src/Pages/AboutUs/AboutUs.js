@@ -20,7 +20,7 @@ const AboutUsPage = ({ posts }) => {
         />
         <div className="blog">
           {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
-          <BlogLinks pages={posts} defaultImage={defaultImage} category="People" />
+          <BlogLinks pages={posts} defaultImage={defaultImage} category="About-Us" />
         </div>
       </div>
     );

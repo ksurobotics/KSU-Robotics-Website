@@ -13,7 +13,7 @@ const BlogLink = ({ page, category, defaultImage }) => {
       <li className="card blog-links-card">
         <div className="picture">
           {/* replaces non-breaking spaces */}
-          <h3>{Helpers.decodeHtml(title)}</h3>
+          <h3>{title ? Helpers.decodeHtml(title) : 'Loading...'}</h3>
           <Cloudinary
             modifiers={modifiers}
             fixed
@@ -22,7 +22,7 @@ const BlogLink = ({ page, category, defaultImage }) => {
           />
         </div>
         {/* strips the excerpt of html tags and trims length to 200 characters */}
-        <p className="excerpt">{Helpers.decodeHtml(excerpt)}</p>
+        <p className="excerpt">{excerpt ? Helpers.decodeHtml(excerpt) : ''}</p>
       </li>
     </Link>
   );
