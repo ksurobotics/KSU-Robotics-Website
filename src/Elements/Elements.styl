@@ -108,6 +108,7 @@ ul.blog-links {
 	position: fixed
 	top: 0
 	width: 100%
+	z-index: 1000
 
 	.modal-title {
 		color: white
@@ -178,5 +179,31 @@ ul.blog-links {
 	.submit {
 		float: right
 		margin-bottom: 2rem
+	}
+
+	+tablet-port() {
+		.email-card {
+			width: 80%
+		}
+
+		.email-form {
+			padding-left: 1.5rem
+		}
+
+		.name, .email {
+			display: block
+		}
+	}
+
+	+mobile() {
+		.email-card {
+			width: 90%
+		}
+
+		.contact-form {
+			.name-input, .email-input, .message-input {
+				padding-left: 1rem
+			}
+		}
 	}
 }

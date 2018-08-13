@@ -50,7 +50,7 @@ const Header = ({ location }) => (
     <Toggle>
       {({ on, toggle }) => (
         <Fragment>
-          <Button onClick={toggle} className={`primary ${location === '/' ? 'hidden' : ''}`}>
+          <Button onClick={toggle} className={`contact-us primary ${location === '/' ? 'hidden' : ''}`}>
             Contact Us!
           </Button>
           <EmailModal render={on} toggle={toggle} />

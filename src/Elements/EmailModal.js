@@ -30,6 +30,7 @@ const EmailModal = ({ render, toggle, info }) =>
             <label className="label" htmlFor="email">
               Your Email
             </label>
+            <span>&nbsp;</span>
             <input
               className="email-input"
               type="email"
