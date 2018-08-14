@@ -3,7 +3,6 @@
 const emailHTML = require('./emailTemplate');
 
 module.exports = (app, nodemailer) => {
-  console.log(process.env.EMAIL_USER);
   const transporter = nodemailer.createTransport({
     host: 'mx1.hostinger.com',
     port: 587,
@@ -34,8 +33,7 @@ module.exports = (app, nodemailer) => {
         res.status(500).json({ error: error.toString() });
         return console.log(error);
       }
+      res.send('Thanks');
     });
-
-    res.send('Thanks');
   });
 };
