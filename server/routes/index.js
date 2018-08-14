@@ -1,7 +1,7 @@
 const postRoutes = require('./postRoutes');
 const emailRoutes = require('./emailRoutes');
 
-module.exports = app => {
+module.exports = (app, nodemailer) => {
   postRoutes(app);
-  emailRoutes(app);
+  emailRoutes(app, nodemailer);
 };

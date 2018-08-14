@@ -1,7 +1,7 @@
-import BlogLink from './BlogLink';
-import BlogLinks from './BlogLinks';
-import Button from './Button';
+import BlogLink from './blogLinks/BlogLink';
+import BlogLinks from './blogLinks/BlogLinks';
+import Button from './button/Button';
 import ContactCard from './contactCard/ContactCard';
-import EmailModal from './EmailModal';
+import EmailModal from './emailModal/EmailModal';
 
 export { BlogLink, BlogLinks, Button, ContactCard, EmailModal };

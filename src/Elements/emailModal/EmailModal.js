@@ -43,7 +43,7 @@ class EmailModal extends Component {
                 X
               </button>
             </div>
-            <p className={`email-response ${this.state.messageSent ? 'open' : ''}`}>Email Sent Successfully</p>
+            <p className={`email-response ${this.state.messageSent ? 'open' : ''}`}>Your email was delivered</p>
             <form className="email-form contact-form" action="#" onSubmit={e => this.formSubmitted(e, toggle)}>
               <div className="name">
                 <label className="label" htmlFor="name">

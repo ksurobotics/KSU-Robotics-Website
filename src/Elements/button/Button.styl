@@ -1,0 +1,28 @@
+.button {
+	border: none
+	border-radius: 6px
+	elevation(3)
+	cursor: pointer
+	font-size: 18px
+	font-weight: bold
+	padding: .7rem 1.4rem
+	position: relative
+	easeOutQuart(all, .15)
+	purple-grad()
+	color: white
+
+	&:hover {
+		box-shadow: 0 8px 15px 0 rgba(0, 0, 0, .1), 0 4px 7px 0 rgba(0, 0, 0, .07)
+		transform: translateY(-1px)
+		easeInQuart(all, .15)
+	}
+}
+
+.button.secondary {
+	background: white
+	color: purple
+
+	&:hover {
+		background: #e6e6e6
+	}
+}

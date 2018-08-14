@@ -1,0 +1,68 @@
+/*
+ *  Styles for the Blog Post Links
+ */
+ul.blog-links {
+	align-items: center
+	display: flex
+	flex-wrap: wrap
+	justify-content: center
+
+	// Adds the margin between the page links
+	a {
+		margin: 3rem
+	}
+
+	// The content of the card.
+	// Transition is for the whole card.
+	// Fixed with because?
+	li.blog-links-card {
+		easeOutCubic(all, .3)
+		display: block
+		padding: 2rem
+		text-align: center
+		width: 30rem
+
+		// Blog link image
+		img {
+			border-radius: 9rem
+			height: 17.5rem
+			object-fit: cover
+			padding-bottom: 1rem
+			width: @height
+		}
+
+		// Blog link header
+		h3 {
+			color: purple
+			font-size: 2rem
+			padding-bottom: 2rem
+			padding-top: .5rem
+		}
+
+		.excerpt {
+			color: darkGray
+			display: block
+		}
+
+		// When the card is hovered, it is roted and moved slightly
+		&:hover {
+			transform: rotate(1deg) translateX(-10px) translateY(-10px)
+			easeInCubic(all, .2)
+		}
+	}
+
+	+tablet-port() {
+		a {
+			margin: 2rem
+		}
+
+		li.blog-links-card {
+			width: 25rem
+
+			img {
+				height: 15rem
+				width: @height
+			}
+		}
+	}
+}

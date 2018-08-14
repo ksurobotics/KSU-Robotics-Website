@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
+require('dotenv').load();
 const express = require('express');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 
 const cors = require('cors');
 
@@ -25,7 +27,7 @@ router.use(express.static(path.resolve(__dirname, '../build'), { maxAge: '30d' }
 // tell the app to use the above rules
 app.use(router);
 
-require('./routes')(app);
+require('./routes')(app, nodemailer);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'), err => {
