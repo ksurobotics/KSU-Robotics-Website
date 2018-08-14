@@ -16,6 +16,7 @@ app.use(cors());
 const router = express.Router();
 
 // so that I can look at the body of post requests
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve any static files
