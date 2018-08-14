@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-require('dotenv').load();
+const dotenv = require('dotenv');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -8,6 +9,9 @@ const cors = require('cors');
 
 const PORT = 1234;
 const path = require('path');
+
+dotenv.config({ path: path.join(__dirname, '../.env') });
+dotenv.load();
 
 // initialize the application and create the routes
 const app = express();
