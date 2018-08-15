@@ -3,29 +3,25 @@ import axios from 'axios';
 // Fetches data from the api
 function fetchAboutInfo({ hasLocalStorage, app }) {
   axios
-    .get('http://ksurobotics.esy.es/wp-json/wp/v2/pages/105')
+    .get('http://ksurobotics.esy.es/wp-json/wp/v2/pages/105/?_embed')
     .then(res => {
       const initialInfo = res.data;
-
-      axios.get(`http://ksurobotics.esy.es/wp-json/wp/v2/media/${res.data.featured_media}`).then(res2 => {
-        const featuredMedia = res2.data;
-
-        const aboutInfo = {
-          title: initialInfo.title.rendered,
-          slug: initialInfo.slug,
-          acf: initialInfo.acf,
-          content: initialInfo.content.rendered,
-          featuredImage: {
-            sourceUrl: featuredMedia.guid.rendered,
-            altText: featuredMedia.alt_text || featuredMedia.title.rendered,
-          },
-        };
-        app.setState({ aboutInfo });
-        // If the browser supports local storage set our posts data as postNodes and set a token to tell whether we should grab new data
-        if (hasLocalStorage) {
-          window.localStorage.setItem('aboutInfo', JSON.stringify(aboutInfo));
-        }
-      });
+      const featuredMedia = initialInfo._embedded['wp:featuredmedia'][0];
+      const aboutInfo = {
+        title: initialInfo.title.rendered,
+        slug: initialInfo.slug,
+        acf: initialInfo.acf,
+        content: initialInfo.content.rendered,
+        featuredImage: {
+          sourceUrl: featuredMedia.source_url,
+          altText: featuredMedia.alt_text || featuredMedia.title.rendered,
+        },
+      };
+      app.setState({ aboutInfo });
+      // If the browser supports local storage set our posts data as postNodes and set a token to tell whether we should grab new data
+      if (hasLocalStorage) {
+        window.localStorage.setItem('aboutInfo', JSON.stringify(aboutInfo));
+      }
     })
     .catch(err => {
       console.error(err);
