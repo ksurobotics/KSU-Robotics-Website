@@ -20,6 +20,7 @@ class EmailModal extends Component {
       .then(res => {
         this.setState({ messageSent: true });
         setTimeout(() => {
+          window.scrollTo(0, 0);
           toggle();
           this.setState({ messageSent: false });
         }, 3000);

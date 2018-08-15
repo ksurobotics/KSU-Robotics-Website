@@ -69,12 +69,10 @@ function importPosts({ app }) {
   if (typeof Storage !== 'undefined') {
     // the browser storage object
     const store = window.localStorage;
-
-    let latestModified = '';
     // returns a string of the date of the most recently modified post
     getLatestModified()
       .then(res => {
-        latestModified = res;
+        const latestModified = res;
         // if the storage already contains our posts then the state is set from storage
         if (store.postNodes && latestModified === store.latestModified) {
           app.setState({ postNodes: JSON.parse(store.getItem('postNodes')) });

@@ -4,16 +4,20 @@ import Helmet from 'react-helmet';
 import { withRouter, Route } from 'react-router';
 import { some, filter, includes } from 'lodash';
 
-import { PropsRoute, importPosts } from 'Utilities';
+import { PropsRoute, importPosts, importAboutInfo } from 'Utilities';
 import { Header, Footer, Home, Competitions, Robots, AboutUs, PostTemplate } from 'Pages';
 
 class App extends Component {
   state = {
     postNodes: [],
+    aboutInfo: {
+      featuredImage: {},
+    },
   };
 
   componentWillMount() {
     importPosts({ app: this });
+    importAboutInfo({ app: this });
   }
 
   /**
@@ -44,7 +48,13 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         {/* This component allows me to pass props to a component while still routing correctly */}
         <PropsRoute exact path="/Competitions" component={Competitions} posts={this.getCategoryPosts('Competitions')} />
-        <PropsRoute exact path="/About-Us" component={AboutUs} posts={this.getCategoryPosts('People')} />
+        <PropsRoute
+          exact
+          path="/About-Us"
+          component={AboutUs}
+          posts={this.getCategoryPosts('People')}
+          aboutInfo={this.state.aboutInfo}
+        />
         <PropsRoute exact path="/Robots" component={Robots} posts={this.getCategoryPosts('Robots')} />
         <PropsRoute
           path="/(Competitions|About-Us|Robots)/:uri"

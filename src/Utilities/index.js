@@ -6,5 +6,6 @@ import importPosts from './importPosts';
 import Cloudinary from './Cloudinary';
 import Toggle from './Toggle';
 import Icon from './Icon';
+import importAboutInfo from './importAboutInfo';
 
-export { Helpers, ImageTransformer, PropsRoute, importPosts, Cloudinary, Toggle, Icon };
+export { Helpers, ImageTransformer, PropsRoute, importPosts, Cloudinary, Toggle, Icon, importAboutInfo };

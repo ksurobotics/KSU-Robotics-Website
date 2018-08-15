@@ -17,6 +17,11 @@ module.exports = app => {
             modified
           }
         }
+        pages(where: { orderby: { field: MODIFIED, order: DESC } }, first: 1) {
+          nodes {
+            modified
+          }
+        }
       }
     `;
 
@@ -28,7 +33,9 @@ module.exports = app => {
       })
       .then(res => {
         // gives us the latest modified date. Only will be one item in the result
-        const time = res.data.data.posts.nodes[0].modified;
+        const postTime = res.data.data.posts.nodes[0].modified;
+        const pageTime = res.data.data.pages.nodes[0].modified;
+        const time = postTime > pageTime ? postTime : pageTime;
         lastModifiedDate = time;
       })
       .catch(err => {
