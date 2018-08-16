@@ -35,8 +35,7 @@ class ContactCard extends Component {
                 action="#"
                 onSubmit={event => {
                   event.preventDefault();
-                  event.target.name.value = '';
-                  event.target.email.value = '';
+                  event.target.reset();
                   toggle();
                 }}
               >
