@@ -85,7 +85,7 @@ class EmailModal extends Component {
                   placeholder="What would you like to ask?"
                 />
               </div>
-              <input className="button primary submit" type="submit" value="Contact Us" />
+              <input className="button primary submit" type="submit" value="Send Email" />
             </form>
           </div>
         </div>

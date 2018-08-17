@@ -2,8 +2,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import { BlogLinks, Button } from 'Elements/';
-import { Cloudinary, Helpers } from 'Utilities';
+import { BlogLinks } from 'Elements/';
+import { Cloudinary } from 'Utilities';
 
 // eslint-disable-next-line
 const AboutUsPage = ({ posts, aboutInfo }) => {
@@ -11,7 +11,7 @@ const AboutUsPage = ({ posts, aboutInfo }) => {
   const aboutUsHero = { maxWidth: 1, height: 550 };
   if (posts) {
     return (
-      <div className="about-us competitions">
+      <div className="about-us">
         {/* Sets the headers for the competitions page */}
         <Helmet
           title="About Us"
@@ -27,18 +27,11 @@ const AboutUsPage = ({ posts, aboutInfo }) => {
             fluid
             source={aboutInfo.featuredImage.sourceUrl || defaultImage}
             alt={aboutInfo.featuredImage.altText}
+            className="hero-image"
           />
-          <div className="hero-card-wrapper">
-            <div className="card hero-card">
-              <h2 className="title">{Helpers.decodeHtml(aboutInfo.title)}</h2>
-              <p className="excerpt">
-                {// removes html tags
-                Helpers.decodeHtml(aboutInfo.content)}
-              </p>
-              <a href={`/Competitions/${aboutInfo.slug}`}>
-                <Button className="primary">View Competition</Button>
-              </a>
-            </div>
+          <div className="title-section">
+            <h2 className="heading">Meet the Team</h2>
+            <h4 className="subheading">K-State Robotics 2018</h4>
           </div>
         </div>
         <div className="blog">

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Cloudinary = ({ fluid, fixed, source, modifiers, alt }) => {
+const Cloudinary = ({ fluid, fixed, source, modifiers, alt, className }) => {
   function getTransformationUrl({ transformations, remoteUrl }) {
     const parsedRemoteUrl = remoteUrl.split('wp-content/uploads/').pop();
     const optimParams = 'f_auto,q_auto';
@@ -21,7 +21,7 @@ const Cloudinary = ({ fluid, fixed, source, modifiers, alt }) => {
     );
     const getSrcSet = () => `${urls[0]}, ${urls[1]} 2x`;
 
-    return <img src={urls[0]} alt={alt} srcSet={getSrcSet()} />;
+    return <img className={className} src={urls[0]} alt={alt} srcSet={getSrcSet()} />;
   }
 
   function getFluidTag() {
@@ -39,7 +39,7 @@ const Cloudinary = ({ fluid, fixed, source, modifiers, alt }) => {
     const getSizes = () => `(max-width: ${scaled[0]}px) 100vw, ${scaled[0]}px`;
     const getSourceSet = () => fluidUrls.map((url, i) => `${url} ${scaled[i]}w, `).join('');
 
-    return <img src={fluidUrls[0]} alt={alt} sizes={getSizes()} srcSet={getSourceSet()} />;
+    return <img src={fluidUrls[0]} className={className} alt={alt} sizes={getSizes()} srcSet={getSourceSet()} />;
   }
   if (fluid) return getFluidTag();
   else if (fixed) return getFixedTag();
@@ -53,6 +53,7 @@ Cloudinary.propTypes = {
   source: PropTypes.string.isRequired,
   modifiers: PropTypes.object,
   alt: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Cloudinary.defaultProps = {
@@ -60,4 +61,5 @@ Cloudinary.defaultProps = {
   fixed: false,
   modifiers: {},
   alt: '',
+  className: '',
 };
