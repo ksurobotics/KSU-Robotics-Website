@@ -48,6 +48,29 @@ function fetchPosts({ hasLocalStorage, app, latestModified }) {
     });
 }
 
+/* function fetchPosts({hasLocalStorage, app, latestModified}) {
+  axios.get('http://ksurobotics.esy.es/wp-api').then(res => {
+    .then(res => {
+      const initialInfo = res.data;
+      const featuredMedia = initialInfo._embedded['wp:featuredmedia'][0];
+      const aboutInfo = {
+        title: initialInfo.title.rendered,
+        slug: initialInfo.slug,
+        acf: initialInfo.acf,
+        content: initialInfo.content.rendered,
+        featuredImage: {
+          sourceUrl: featuredMedia.source_url,
+          altText: featuredMedia.alt_text || featuredMedia.title.rendered,
+        },
+      };
+      this.setState({ aboutInfo });
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  })
+} */
+
 function getLatestModified() {
   return new Promise((resolve, reject) => {
     axios

@@ -5,20 +5,19 @@ import BlogLink from './BlogLink';
 
 // pages is the list of pages with category type <category>
 // defaultImage is the default image for the given blog type
-const BlogLinks = ({ pages, category, defaultImage }) => (
+const BlogLinks = ({ posts, category }) => (
   // returns the list of li's encapsulated in a ul
   <ul className="blog-links">
     {/* Once I learn about it, I will use the context api to pass category and default image right into BlogLink */}
-    {map(pages, page => (
-      <BlogLink page={page} category={category} defaultImage={defaultImage} key={page.slug} />
+    {map(posts, post => (
+      <BlogLink post={post} category={category} key={post.slug} />
     ))}
   </ul>
 );
 
 BlogLinks.propTypes = {
-  pages: PropTypes.array.isRequired,
+  posts: PropTypes.array.isRequired,
   category: PropTypes.string.isRequired,
-  defaultImage: PropTypes.string.isRequired,
 };
 
 // media is the result from the featured_media graphQl query

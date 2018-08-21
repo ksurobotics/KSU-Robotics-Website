@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import { withRouter, Route } from 'react-router';
 import { some, filter, includes } from 'lodash';
 
+import { PostsProvider } from 'Modules/PostsContext';
 import { PropsRoute, importPosts, importAboutInfo } from 'Utilities';
 import { Header, Footer, Home, Competitions, Robots, AboutUs, PostTemplate } from 'Pages';
 
@@ -40,30 +40,34 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Helmet
-          link={[{ href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700', rel: 'stylesheet' }]}
-        />
-        <Header location={this.props.location.pathname} />
-        <Route exact path="/" component={Home} />
-        {/* This component allows me to pass props to a component while still routing correctly */}
-        <PropsRoute exact path="/Competitions" component={Competitions} posts={this.getCategoryPosts('Competitions')} />
-        <PropsRoute
-          exact
-          path="/About-Us"
-          component={AboutUs}
-          posts={this.getCategoryPosts('People')}
-          aboutInfo={this.state.aboutInfo}
-        />
-        <PropsRoute exact path="/Robots" component={Robots} posts={this.getCategoryPosts('Robots')} />
-        <PropsRoute
-          path="/(Competitions|About-Us|Robots)/:uri"
-          component={PostTemplate}
-          post={this.getSpecificPost()}
-          history={this.props.history}
-        />
-        <Footer />
-      </div>
+      <PostsProvider>
+        <div>
+          <Header location={this.props.location.pathname} />
+          <Route exact path="/" component={Home} />
+          {/* This component allows me to pass props to a component while still routing correctly */}
+          <PropsRoute
+            exact
+            path="/Competitions"
+            component={Competitions}
+            posts={this.getCategoryPosts('Competitions')}
+          />
+          <PropsRoute
+            exact
+            path="/About-Us"
+            component={AboutUs}
+            posts={this.getCategoryPosts('People')}
+            aboutInfo={this.state.aboutInfo}
+          />
+          <PropsRoute exact path="/Robots" component={Robots} posts={this.getCategoryPosts('Robots')} />
+          <PropsRoute
+            path="/(Competitions|About-Us|Robots)/:uri"
+            component={PostTemplate}
+            post={this.getSpecificPost()}
+            history={this.props.history}
+          />
+          <Footer />
+        </div>
+      </PostsProvider>
     );
   }
 }
