@@ -61,6 +61,13 @@ class PostsProvider extends Component {
             tempRob.push(returnPost);
           } else if (category === 'People') {
             returnPost.isOfficer = post.acf.isOfficer;
+            returnPost.position = post.acf.position;
+            returnPost.email = post.acf.email;
+            returnPost.semester_joined = post.acf.semester_joined;
+            returnPost.grade_level = post.acf.grade_level;
+            returnPost.favorite_movie = post.acf.favorite_movie;
+            returnPost.hobbies = post.acf.hobbies;
+
             tempPeople.push(returnPost);
           }
         });
