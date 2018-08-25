@@ -41,23 +41,25 @@
 		}
 
 		.extra-info {
-			background: darkGray
+			background: linear-gradient(180deg, rgba(94, 47, 158, .3) 4.42%, rgba(59, 29, 99, .3) 100%), linear-gradient(112.89deg, #7B48BD 0%, #3B1D63 88.82%)
 			border-radius: 5px
+			color: lightGray
 			color: white
 			opacity: 0
-			padding: 2rem
+			padding: 1rem 2rem
 			position: absolute
 			transition: none
 			white-space: nowrap
-			z-index: 1
+			z-index: -1
 
 			&.show {
 				opacity: 1
 				easeInCubic(opacity, .3)
+				z-index: 1
 			}
 
-			p:not(:last-child) {
-				padding-bottom: 1rem
+			p {
+				padding: .5rem 0
 			}
 		}
 	}
