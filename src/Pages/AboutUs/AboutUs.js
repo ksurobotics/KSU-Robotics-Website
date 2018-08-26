@@ -10,6 +10,7 @@ import AboutUsCard from './AboutUsCard';
 // eslint-disable-next-line
 const AboutUsPage = ({ aboutInfo }) => {
   const aboutUsHero = { maxWidth: 1, height: 550 };
+  let numberOfOfficers = 0;
   return (
     <PostsContext.Consumer>
       {state => {
@@ -41,16 +42,20 @@ const AboutUsPage = ({ aboutInfo }) => {
               <div className="blog-index">
                 {/* Passes the WordPress posts, default image, and "Competitions" as props to the PageLinks component */}
                 <h3 className="index-heading">Our Officers</h3>
-                <div className="cards">
-                  {map(state.personPosts, post => (
-                    <AboutUsCard post={post} />
-                  ))}
+                <div className="officer-cards cards">
+                  {map(state.personPosts, post => {
+                    if (post.isOfficer) {
+                      numberOfOfficers += 1;
+                      return <AboutUsCard post={post} key={post.title} index={numberOfOfficers} />;
+                    }
+                  })}
                 </div>
                 <h3 className="index-heading">Our Members</h3>
-                <div className="cards">
-                  {map(state.personPosts, post => (
-                    <AboutUsCard post={post} />
-                  ))}
+                <div className="member-cards cards">
+                  {map(
+                    state.personPosts,
+                    post => (!post.isOfficer ? <AboutUsCard post={post} key={post.title} /> : '')
+                  )}
                 </div>
               </div>
             </div>

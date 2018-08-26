@@ -1,4 +1,6 @@
 .about-us {
+	overflow: hidden
+
 	.hero-image {
 		display: block
 		object-fit: cover
@@ -29,6 +31,7 @@
 
 	.cards {
 		display: flex
+		flex-wrap: wrap
 		justify-content: center
 		padding-top: 3rem
 	}
@@ -64,20 +67,11 @@
 		}
 	}
 
-	.card.officer {
+	.cards .card {
 		background: white
 		border-radius: 5px
 		elevation(5)
 		padding: 2rem 2.5rem 1rem
-
-		&.odd {
-			transform: rotate(8deg)
-		}
-
-		&.even {
-			transform: rotate(-8deg)
-			z-index: 1
-		}
 
 		.header {
 			font-size: 18px
@@ -96,6 +90,17 @@
 			color: darkGray
 			font-weight: 600
 			text-align: center
+		}
+	}
+
+	.officer-cards .card {
+		&.odd {
+			transform: rotate(8deg)
+		}
+
+		&.even {
+			transform: rotate(-8deg)
+			z-index: 1
 		}
 	}
 }
