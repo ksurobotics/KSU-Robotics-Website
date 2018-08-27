@@ -23,6 +23,33 @@ class PostsProvider extends Component {
   };
 
   componentDidMount() {
+    if (typeof Storage !== 'undefined') {
+      const store = window.localStorage;
+      axios
+        .get('/api/latest-post')
+        .then(res => {
+          const latestModified = res.data;
+          if (store.personPosts && latestModified === store.latestModified) {
+            this.setState(
+              {
+                personPosts: JSON.parse(store.getItem('personPosts')),
+                robotPosts: JSON.parse(store.getItem('robotPosts')),
+                competitionPosts: JSON.parse(store.getItem('competitionPosts')),
+              },
+              () => {
+                this.setState({ isLoaded: true });
+              }
+            );
+          } else this.fetchPosts({ hasLocalStorage: true, latestModified }); // retrieve posts
+        })
+        .catch(err => {
+          // eslint-disable-next-line
+          console.error(err);
+        });
+    } else this.fetchPosts({ hasLocalStorage: false });
+  }
+
+  fetchPosts({ hasLocalStorage, latestModified }) {
     axios
       .get('http://ksurobotics.esy.es/wp-json/wp/v2/posts/?_embed&per_page=100')
       .then(res => {
@@ -78,8 +105,16 @@ class PostsProvider extends Component {
         const personPosts = orderBy(tempPeople, ['date'], ['desc']);
 
         this.setState({ personPosts, robotPosts, competitionPosts, isLoaded: true });
+
+        if (hasLocalStorage) {
+          window.localStorage.setItem('personPosts', JSON.stringify(personPosts));
+          window.localStorage.setItem('robotPosts', JSON.stringify(robotPosts));
+          window.localStorage.setItem('competitionPosts', JSON.stringify(competitionPosts));
+          window.localStorage.setItem('latestModified', latestModified);
+        }
       })
       .catch(err => {
+        // eslint-disable-next-line
         console.error(err);
       });
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { BlogLinks } from 'Elements/';
+import { BlogLinks, Spinner } from 'Elements/';
 import { PostsContext } from 'Modules/PostsContext';
 
 // eslint-disable-next-line
@@ -26,7 +26,7 @@ const RobotsPage = () => (
           </div>
         );
       }
-      return <h1>Loading...</h1>;
+      return <Spinner />;
     }}
   </PostsContext.Consumer>
 );

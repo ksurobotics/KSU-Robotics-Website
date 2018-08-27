@@ -17,6 +17,7 @@ const BlogLink = ({ post, category }) => {
         </div>
         {/* strips the excerpt of html tags and trims length to 200 characters */}
         <p className="excerpt">{excerpt}</p>
+        <p className="more">. . .</p>
       </li>
     </Link>
   );

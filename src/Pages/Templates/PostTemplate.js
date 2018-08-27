@@ -2,34 +2,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ImageTransformer, Helpers, Icon } from 'Utilities';
-import defaultImage from 'assets/images/default-person-image.jpeg';
+import { Cloudinary, Helpers, Icon } from 'Utilities';
+import { PostsContext } from 'Modules/PostsContext';
+import { Spinner } from 'Elements';
 
-const PostTemplate = ({ post, history }) => {
+const PostTemplate = ({ history, match }) => {
   function handleBackClick() {
     history.goBack();
   }
-  if (post) {
-    return (
-      <div className="post">
-        <button className="back" onClick={handleBackClick}>
-          <Icon className="icon" name="back" />
-          <span className="text">Back</span>
-        </button>
-        <div className="page-wrapper">
-          <h1 className="title">{post.title ? Helpers.decodeHtml(post.title) : 'Loading...'}</h1>
-          <ImageTransformer media={post.featuredImage} defaultImage={defaultImage} className="featured" />
-          <div className="content" dangerouslySetInnerHTML={{ __html: post.content }} />
-        </div>
-      </div>
-    );
-  }
-  return <h1>Loading...</h1>;
+
+  const featuredImageSettings = { maxWidth: 1, height: 550 };
+
+  return (
+    <PostsContext.Consumer>
+      {state => {
+        if (state.isLoaded) {
+          let post = null;
+          if (match.params['0'] === 'Competitions') {
+            post = state.competitionPosts.find(p => p.slug === match.params.uri);
+          } else if (match.params['0'] === 'Robots') {
+            post = state.robotPosts.find(p => p.slug === match.params.uri);
+          }
+
+          if (post) {
+            return (
+              <div className="post">
+                <button className="back" onClick={handleBackClick}>
+                  <Icon className="icon" name="back" />
+                  <span className="text">Back</span>
+                </button>
+                <div className="page-wrapper">
+                  <h1 className="title">{post.title ? Helpers.decodeHtml(post.title) : 'Loading...'}</h1>
+                  <Cloudinary
+                    modifiers={featuredImageSettings}
+                    fluid
+                    source={post.featuredImage.sourceUrl}
+                    alt={post.featuredImage.altText}
+                    className="featured-image"
+                  />
+                  {/* !Need to Sanitize this! */}
+                  <div className="content" dangerouslySetInnerHTML={{ __html: Helpers.sanitize(post.content) }} />
+                </div>
+              </div>
+            );
+          }
+        }
+        return <Spinner />;
+      }}
+    </PostsContext.Consumer>
+  );
 };
 
 PostTemplate.propTypes = {
-  post: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 export default PostTemplate;

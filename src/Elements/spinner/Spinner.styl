@@ -1,0 +1,72 @@
+.spinner {
+	display: block
+	margin: 8rem auto
+	width: 25rem
+
+	.text {
+		color: purple
+		font-size: 3rem
+		margin-bottom: 4rem
+		text-align: center
+	}
+
+	@keyframes fadeIn1 {
+		15%, 100% {
+			opacity: 1
+		}
+	}
+
+	@keyframes fadeIn2 {
+		15% {
+			opacity: 0
+		}
+
+		40%, 100% {
+			opacity: 1
+		}
+	}
+
+	@keyframes fadeIn3 {
+		40% {
+			opacity: 0
+		}
+
+		65%, 100% {
+			opacity: 1
+		}
+	}
+
+	@keyframes fadeIn4 {
+		65% {
+			opacity: 0
+		}
+
+		90%, 100% {
+			opacity: 1
+		}
+	}
+
+	path {
+		opacity: 0
+	}
+
+	path.bottom-right {
+		animation: fadeIn1 1s ease-in infinite
+		animation-direction: alternate
+	}
+
+	path.bottom-left {
+		animation: fadeIn2 1s ease-in infinite
+		animation-direction: alternate
+	}
+
+	path.middle {
+		animation: fadeIn3 1s ease-in infinite
+		animation-direction: alternate
+	}
+
+	path.top {
+		animation: fadeIn4 1s ease-in infinite
+		animation-direction: alternate
+	}
+}

@@ -20,7 +20,8 @@
 	}
 
 	.subheading {
-		padding-top: 1rem
+		padding: 1rem
+		text-align: center
 	}
 
 	.index-heading {
@@ -55,6 +56,10 @@
 			white-space: nowrap
 			z-index: -1
 
+			.label {
+				font-weight: 600
+			}
+
 			&.show {
 				opacity: 1
 				easeInCubic(opacity, .3)
@@ -67,11 +72,15 @@
 		}
 	}
 
-	.cards .card {
+	.card {
 		background: white
 		border-radius: 5px
 		elevation(5)
 		padding: 2rem 2.5rem 1rem
+
+		.icon {
+			display: none
+		}
 
 		.header {
 			font-size: 18px
@@ -101,6 +110,47 @@
 		&.even {
 			transform: rotate(-8deg)
 			z-index: 1
+		}
+	}
+
+	.member-cards .card {
+		margin-bottom: 2rem
+	}
+
+	+mobile() {
+		.cards .person {
+			margin-left: 0
+		}
+
+		.card .icon {
+			display: block
+			position: absolute
+			right: 7px
+			top: 7px
+		}
+
+		.person .extra-info {
+			bottom: 100%
+			bottom: auto
+			left: -2rem !important
+			position: absolute
+			right: -2rem
+			top: 0 !important
+			white-space: normal
+
+			.label {
+				display: block
+			}
+		}
+
+		.officer-cards .card {
+			&.odd {
+				transform: rotate(8deg)
+			}
+
+			&.even {
+				transform: rotate(-8deg)
+			}
 		}
 	}
 }

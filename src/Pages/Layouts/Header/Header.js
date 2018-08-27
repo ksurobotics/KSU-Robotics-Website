@@ -25,14 +25,14 @@ Logo.propTypes = {
 const Header = ({ location }) => (
   <div className={`header-wrapper ${location === '/' ? 'home' : 'general'}`}>
     <Logo location={location} />
-    <ul className={`main-nav ${location.toLowerCase() === '/competitions' ? 'active-competitions' : ''}`}>
+    <ul className="main-nav">
       <li>
         <NavLink exact activeClassName="current-url" to="/">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink activeClassName="current-url" to="/About-Us">
+        <NavLink activeClassName="current-url about-us" to="/About-Us">
           About Us
         </NavLink>
       </li>

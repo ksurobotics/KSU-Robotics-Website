@@ -1,9 +1,9 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { BlogLinks, Button } from 'Elements';
+import { BlogLinks, Button, Spinner } from 'Elements';
 import { Cloudinary } from 'Utilities';
-import { PostsContext } from '../../Modules/PostsContext';
+import { PostsContext } from 'Modules/PostsContext';
 
 /**
  * Uses the Posts context to retrieve the competition posts. If the competition Posts are
@@ -60,7 +60,7 @@ const CompetitionsPage = () => (
           </div>
         );
       }
-      return <h2>Loading</h2>;
+      return <Spinner />;
     }}
   </PostsContext.Consumer>
 );
