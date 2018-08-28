@@ -39,6 +39,7 @@
     "concurrently": "^3.6.1",
     "eslint-config-airbnb": "^16",
     "eslint-plugin-graphql": "^2.1.1",
+    "eslint-plugin-jest": "^21.22.0",
     "stylus": "^0.54.5"
   }
 }
