@@ -9,9 +9,9 @@ const PostsContext = React.createContext();
 
 // Urls for the default images. Need to change to production.
 const defaultImages = {
-  Competitions: 'http://ksurobotics.esy.es/wp-content/uploads/2018/08/Default-Competition.jpg',
-  Robots: 'http://ksurobotics.esy.es/wp-content/uploads/2018/08/Default-Robot.jpg',
-  People: 'http://ksurobotics.esy.es/wp-content/uploads/2018/08/Default-Person.jpg',
+  Competitions: `${Helpers.api}/wp-content/uploads/2018/08/Default-Competition.jpg`,
+  Robots: `${Helpers.api}/wp-content/uploads/2018/08/Default-Robot.jpg`,
+  People: `${Helpers.api}/wp-content/uploads/2018/08/Default-Person.jpg`,
 };
 
 class PostsProvider extends Component {
@@ -51,7 +51,7 @@ class PostsProvider extends Component {
 
   fetchPosts({ hasLocalStorage, latestModified }) {
     axios
-      .get('http://ksurobotics.esy.es/wp-json/wp/v2/posts/?_embed&per_page=100')
+      .get(`${Helpers.api}/wp-json/wp/v2/posts/?_embed&per_page=100`)
       .then(res => {
         const initialPosts = res.data;
         const tempRob = [];

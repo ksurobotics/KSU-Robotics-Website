@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { Helpers } from 'Utilities';
 
 // Fetches data from the api
 function fetchAboutInfo({ hasLocalStorage, app }) {
   axios
-    .get('http://ksurobotics.esy.es/wp-json/wp/v2/pages/105/?_embed')
+    .get(`${Helpers.api}/wp-json/wp/v2/pages/105/?_embed`)
     .then(res => {
       const initialInfo = res.data;
       const featuredMedia = initialInfo._embedded['wp:featuredmedia'][0];

@@ -27,6 +27,7 @@ module.exports = app => {
 
     axios
       // !Change this to the production route when I get it
+      // .post('https://wordpress.ksurct.com/graphql', {
       .post('http://ksurobotics.esy.es/graphql', {
         query: `${LATEST_MODIFIED}`,
         variables: '',
