@@ -28,5 +28,5 @@ export const copyToClipboard = str => {
 
 export const sanitize = html => html;
 
-// export const api = 'http://wordpress.ksurct.com';
-export const api = 'http://ksurobotics.esy.es';
+export const api = 'https://wordpress.ksurct.com';
+// export const api = 'http://ksurobotics.esy.es';
