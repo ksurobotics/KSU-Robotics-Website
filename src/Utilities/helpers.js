@@ -1,3 +1,5 @@
+import insane from 'insane';
+
 // replaces html entities and replaces html tags
 export function decodeHtml(html) {
   const txt = document.createElement('textarea');
@@ -26,4 +28,4 @@ export const copyToClipboard = str => {
   }
 };
 
-export const sanitize = html => html;
+export const sanitize = html => insane(html);
