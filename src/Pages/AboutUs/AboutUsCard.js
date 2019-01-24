@@ -86,10 +86,9 @@ export default class AboutUsCard extends Component {
         {/* prettier-ignore */}
         <div className={`extra-info ${index % 2 ? 'odd' : 'even'}`} style={{ top: this.state.y, left: this.state.x }}>
           {<p><span className="label">Contact: </span>{post.email}</p>}
-          {post.semester_joined ? <p><span className="label">Semester Joined: </span>{post.semester_joined}</p> : ''}
-          {post.grade_level ? <p><span className="label">Year in School: </span>{post.grade_level}</p> : ''}
-          {post.favorite_movie ? <p><span className="label">Favorite Movie: </span>{post.favorite_movie}</p> : ''}
-          {post.hobbies ? <p><span className="label">Favorite Hobbies: </span>{post.hobbies}</p> : ''}
+          {post.major ? <p><span className="label">Favorite Activities: </span>{post.major}</p> : ''}
+          {post.graduation_date ? <p><span className="label">Expected Graduation Date: </span>{post.graduation_date}</p> : ''}
+          {post.activities ? <p><span className="label">Favorite Activities: </span>{post.activities}</p> : ''}
         </div>
       </div>
     ) : (

@@ -21,7 +21,7 @@ module.exports = (app, nodemailer) => {
 
     const mailOptions = {
       from: `"KSU Robotics" <${process.env.EMAIL_USER}>`, // sender address
-      to: 'alex@wendte.tech', // list of receivers
+      to: 'alex@wendte.tech, ksurctofficers@gmail.com', // list of receivers
       subject: 'Robotics Contact Form Submit', // Subject line
       text: '', // plain text body
       html: emailHTML(name, email, message),

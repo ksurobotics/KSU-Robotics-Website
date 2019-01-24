@@ -10,8 +10,8 @@ const Logo = ({ location }) => {
   if (location === '/') color = '#FFFFFF';
   return (
     <NavLink className="logo" to="/">
-      <span className={`text ${color}`}>KSU Robotics</span>
       <Icon name="wildcat" color={color} />
+      <span className={`text ${color}`}>KSU Robotics</span>
     </NavLink>
   );
 };
