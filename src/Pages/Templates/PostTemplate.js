@@ -32,7 +32,6 @@ const PostTemplate = ({ history, match }) => {
                   <span className="text">Back</span>
                 </button>
                 <div className="page-wrapper">
-                  <h1 className="title">{post.title ? Helpers.decodeHtml(post.title) : 'Loading...'}</h1>
                   <Cloudinary
                     modifiers={featuredImageSettings}
                     fluid
@@ -41,7 +40,10 @@ const PostTemplate = ({ history, match }) => {
                     className="featured-image"
                   />
                   {/* !Need to Sanitize this! */}
-                  <div className="content" dangerouslySetInnerHTML={{ __html: Helpers.sanitize(post.content) }} />
+                  <div className="content">
+                    <h1 className="title">{post.title ? Helpers.decodeHtml(post.title) : 'Loading...'}</h1>
+                    <div dangerouslySetInnerHTML={{ __html: Helpers.sanitize(post.content) }} />
+                  </div>
                 </div>
               </div>
             );

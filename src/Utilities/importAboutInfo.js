@@ -58,7 +58,7 @@ function importAboutInfo({ app }) {
         } else fetchAboutInfo({ hasLocalStorage: true, app, latestModified }); // retrieve info from wordpress and set local storage
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
 
     // The browser doesn't have storage so we are fetching from the api

@@ -60,13 +60,12 @@ class AboutUsPage extends Component {
                       }
                     })}
                   </div>
-                  <h3 className="index-heading">Our Members</h3>
+                  {/* <h3 className="index-heading">Our Members</h3>
                   <div className="member-cards cards">
-                    {map(
-                      state.personPosts,
-                      post => (!post.isOfficer ? <AboutUsCard post={post} key={post.title} /> : '')
+                    {map(state.personPosts, post =>
+                      !post.isOfficer ? <AboutUsCard post={post} key={post.title} /> : ''
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             );

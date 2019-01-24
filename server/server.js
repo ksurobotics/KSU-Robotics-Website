@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 
 const cors = require('cors');
 
-const PORT = 1234;
+const PORT = process.env.PORT || 1234;
 const path = require('path');
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
@@ -32,6 +32,8 @@ router.use(express.static(path.resolve(__dirname, '../build'), { maxAge: '30d' }
 app.use(router);
 
 require('./routes')(app, nodemailer);
+
+app.get('/docker/docker-check', (_, res) => res.send('app is ready'));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'), err => {

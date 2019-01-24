@@ -10,6 +10,7 @@ class EmailModal extends Component {
 
   formSubmitted = (e, toggle) => {
     e.preventDefault();
+    e.persist();
     const { name, email, message } = e.target;
     axios
       .post('/api/send', {
@@ -27,7 +28,7 @@ class EmailModal extends Component {
         }, 3000);
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   };
 
@@ -46,7 +47,7 @@ class EmailModal extends Component {
               </button>
             </div>
             <p className={`email-response ${this.state.messageSent ? 'open' : ''}`}>Your email was delivered</p>
-            <form className="email-form contact-form" action="#" onSubmit={e => this.formSubmitted(e, toggle)}>
+            <form className="email-form contact-form" onSubmit={e => this.formSubmitted(e, toggle)}>
               <div className="name">
                 <label className="label" htmlFor="name">
                   Your Name

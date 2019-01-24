@@ -21,7 +21,7 @@ module.exports = (app, nodemailer) => {
 
     const mailOptions = {
       from: `"KSU Robotics" <${process.env.EMAIL_USER}>`, // sender address
-      to: 'alexwendte@gmail.com', // list of receivers
+      to: 'alex@wendte.tech', // list of receivers
       subject: 'Robotics Contact Form Submit', // Subject line
       text: '', // plain text body
       html: emailHTML(name, email, message),
@@ -31,7 +31,7 @@ module.exports = (app, nodemailer) => {
     transporter.sendMail(mailOptions, error => {
       if (error) {
         res.status(500).json({ error: error.toString() });
-        return console.log(error);
+        return console.error(error);
       }
       res.send('Thanks');
     });

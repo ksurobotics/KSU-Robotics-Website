@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { ContactCard } from 'Elements';
+import { Link } from 'react-router-dom';
 
 const IndexPage = () => (
   <div className="page-wrapper home-page">
@@ -21,27 +22,27 @@ const IndexPage = () => (
       </div>
     </div>
     <div className="content">
-      <h2>This is a great statement</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
-        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
-        excepturi exercitationem.
+      <h2 className="subheading">View our content</h2>
+      <p className="p">
+        We have competed in several{' '}
+        <Link to="/Competitions" className="link">
+          competitions
+        </Link>{' '}
+        over the years
       </p>
-      <h2>This is another Great Statement!</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste autem neque sapiente asperiores sint,
-        officia itaque quo reprehenderit, accusamus doloribus. Voluptatem quo dolores incidunt alias consectetur magnam
-        aliquam deserunt neque praesentium perferendis earum, deleniti eaque officiis aspernatur saepe commodi,
-        repudiandae quos magni ullam quod sed. Possimus obcaecati repudiandae debitis soluta natus neque eius aliquam
-        perferendis dolores magni rem minima in illum aperiam et voluptatum, odit saepe, porro ea totam? Ea non
-        perferendis velit ducimus sint quaerat doloremque fugiat tempore vitae quia, ullam saepe corporis molestiae
-        illum! Adipisci natus praesentium labore corporis consequuntur earum! Harum iure molestias necessitatibus
-        excepturi exercitationem.
+      <p className="p">
+        Each of our competitions had a different robot with different specifications and designs. You can view all of
+        our past robots{' '}
+        <Link to="/Robots" className="link">
+          here
+        </Link>
+      </p>
+      <p className="p">
+        We have an incredible team. We have a page dedicated exclusively to{' '}
+        <Link to="/About-Us" className="link">
+          meeting our team.
+        </Link>{' '}
+        We would love for you to join us!
       </p>
     </div>
   </div>
